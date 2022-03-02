@@ -17,6 +17,8 @@ public class PlayerMove : MonoBehaviour
     bool isAlive = true;
     bool isBlue = true;
 
+    bool grounded = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,7 @@ public class PlayerMove : MonoBehaviour
             isBlue = !isBlue;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && grounded)
         {
             rb.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
         }
@@ -71,6 +73,18 @@ public class PlayerMove : MonoBehaviour
         {
             isAlive = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
+        {
+            grounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
+        {
+            grounded = false;
         }
     }
 
