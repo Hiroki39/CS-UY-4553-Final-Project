@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     public int playerNum = 1;
     public int speed = 10;
+    public int jumpSpeed = 10;
     public Material Mat1;
     public Material Mat2;
     Renderer rend;
@@ -27,7 +28,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if (isBlue)
             {
@@ -38,6 +39,11 @@ public class PlayerMove : MonoBehaviour
                 rend.material = Mat1;
             }
             isBlue = !isBlue;
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
         }
     }
 
