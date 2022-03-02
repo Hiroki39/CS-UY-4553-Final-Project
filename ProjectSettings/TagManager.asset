@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground1
   - Ground2
+  - Gem1
+  - Gem2
+  - Gem3
   layers:
   - Default
   - TransparentFX
