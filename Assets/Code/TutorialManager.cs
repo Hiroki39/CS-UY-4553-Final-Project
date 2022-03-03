@@ -7,6 +7,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] popUps;
     private bool changedPopUp = false;
     private bool canChangePopUp = true;
+    private bool showTempWall = true;
     public int popUpIndex;
     public float waitTime;
     public GameObject player;
@@ -66,28 +67,28 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp)
+        else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && PublicVars.movedPlatformFirstTime)
+        {
+            showTempWall = false;
+            StartCoroutine(ChangePopUp());
+            changedPopUp = true;
+        }
+        else if (popUpIndex == 5 && !canChangePopUp && !changedPopUp && PublicVars.pickedYellow)
         {
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 5 && !canChangePopUp && !changedPopUp && PublicVars.movedPlatformFirstTime)
-        {
-            tempwall.SetActive(false);
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-        }
-        else if (popUpIndex == 6 && !canChangePopUp && !changedPopUp && PublicVars.pickedYellow)
+        else if (popUpIndex == 6 && !canChangePopUp && !changedPopUp && PublicVars.pickedGreen)
         {
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 7 && !canChangePopUp && !changedPopUp && PublicVars.pickedGreen)
+        else if (popUpIndex == 7 && !canChangePopUp && !changedPopUp && PublicVars.pickedRed)
         {
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 8 && !canChangePopUp && !changedPopUp && PublicVars.pickedGreen)
+        else if (popUpIndex == 8 && !canChangePopUp && !changedPopUp)
         {
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
@@ -98,6 +99,7 @@ public class TutorialManager : MonoBehaviour
     public IEnumerator ChangePopUp()
     {
         yield return new WaitForSeconds(waitTime);
+        tempwall.SetActive(showTempWall);
         popUps[popUpIndex++].SetActive(false);
         canChangePopUp = true;
     }
