@@ -11,7 +11,10 @@ public class NextLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(LevelToLoad);
+            if (!PublicVars.disableGoal)
+            {
+                SceneManager.LoadScene(LevelToLoad);
+            }
         }
     }
 }
