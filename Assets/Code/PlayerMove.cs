@@ -24,6 +24,9 @@ public class PlayerMove : MonoBehaviour
 
     bool grounded = false;
 
+    public AudioSource objectSound;
+    public AudioClip gemEatingSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,6 +133,7 @@ public class PlayerMove : MonoBehaviour
         //Note: we use colliders here, not collisions
         if (other.gameObject.CompareTag("Gem1") || other.gameObject.CompareTag("Gem2") || other.gameObject.CompareTag("Gem3") || other.gameObject.CompareTag("Gem4"))
         {
+            objectSound.PlayOneShot(gemEatingSound);
             other.gameObject.GetComponentInChildren<ParticleSystem>().Play();
             other.gameObject.GetComponentInChildren<Renderer>().enabled = false;
             other.gameObject.GetComponent<Collider>().enabled = false;
