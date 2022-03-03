@@ -9,13 +9,10 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !PublicVars.disableGoal)
         {
-            if (!PublicVars.disableGoal)
-            {
-            	PublicVars.checkPoint = 0;
-                SceneManager.LoadScene(LevelToLoad);
-            }
+            PublicVars.checkPoint = 0;
+            SceneManager.LoadScene(LevelToLoad);
         }
     }
 }
