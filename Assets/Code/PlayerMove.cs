@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
+    
     public int playerNum = 1;
     public int speed = 10;
     public int jumpSpeed = 10;
@@ -85,6 +86,32 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
         {
             grounded = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+         //Note: we use colliders here, not collisions
+        if (other.gameObject.CompareTag("Gem1") || other.gameObject.CompareTag("Gem2") || other.gameObject.CompareTag("Gem3") || other.gameObject.CompareTag("Gem4")) {
+            other.gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            other.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            Destroy(other.gameObject, 0.5f);
+        }
+
+        if (other.gameObject.CompareTag("Gem1") ) {
+            
+        }
+
+        if (other.gameObject.CompareTag("Gem2")) {
+            
+        }
+
+        if (other.gameObject.CompareTag("Gem3")) {
+            transform.localScale /= 1.5f;
+        }
+
+        if (other.gameObject.CompareTag("Gem4")) {
+            transform.localScale *= 1.5f;
         }
     }
 
