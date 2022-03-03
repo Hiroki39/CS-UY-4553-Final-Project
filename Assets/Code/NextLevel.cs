@@ -13,6 +13,7 @@ public class NextLevel : MonoBehaviour
         {
             if (!PublicVars.disableGoal)
             {
+            	PublicVars.checkPoint = 0;
                 SceneManager.LoadScene(LevelToLoad);
             }
         }
