@@ -589,10 +589,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 1517884302279420077, guid: 2a12e81a6dd7e4bb893966e3ce07e2ad, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a12e81a6dd7e4bb893966e3ce07e2ad, type: 3}
 --- !u!1001 &213507593
