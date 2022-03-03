@@ -11,6 +11,7 @@ public class NextLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PublicVars.checkPoint = 0;
             SceneManager.LoadScene(LevelToLoad);
         }
     }
