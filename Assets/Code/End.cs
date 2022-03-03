@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class NextLevel : MonoBehaviour
+public class End : MonoBehaviour
 {
-    public string LevelToLoad;
+    public GameObject end;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(LevelToLoad);
+            showEnd();
         }
+    }
+
+    void showEnd()
+    {
+        end.SetActive(true);
     }
 }
