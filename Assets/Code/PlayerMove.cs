@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject[] checkPoints;
     public bool[] checkPointIsBlues;
     public float[] checkPointScales;
+    public GameObject bluePicked;
     Renderer rend;
 
     Rigidbody rb;
@@ -70,7 +71,7 @@ public class PlayerMove : MonoBehaviour
             isBlue = !isBlue;
         }
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && (grounded || PublicVars.infinteJump))
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
@@ -142,7 +143,11 @@ public class PlayerMove : MonoBehaviour
 
         if (other.gameObject.CompareTag("Gem1"))
         {
-
+            if (!PublicVars.infinteJump)
+            {
+                StartCoroutine(BlueGemFirstTime());
+                PublicVars.infinteJump = true;
+            }
         }
 
         if (other.gameObject.CompareTag("Gem2"))
@@ -176,5 +181,12 @@ public class PlayerMove : MonoBehaviour
     IEnumerator WaitToMove()
     {
         yield return new WaitForSeconds(.2f);
+    }
+
+    public IEnumerator BlueGemFirstTime()
+    {
+        bluePicked.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        bluePicked.SetActive(false);
     }
 }

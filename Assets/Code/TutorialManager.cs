@@ -13,6 +13,8 @@ public class TutorialManager : MonoBehaviour
     public GameObject player;
     public PlayerMove playerScript;
     public GameObject tempwall;
+    public GameObject tempWall2;
+    public GameObject goal;
 
     private void Start()
     {
@@ -66,15 +68,18 @@ public class TutorialManager : MonoBehaviour
             waitTime = 3f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
+            tempWall2.SetActive(false);
         }
         else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && PublicVars.movedPlatformFirstTime)
         {
             showTempWall = false;
+            waitTime = 1f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
         else if (popUpIndex == 5 && !canChangePopUp && !changedPopUp && PublicVars.pickedYellow)
         {
+            waitTime = 3f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
@@ -88,8 +93,16 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 8 && !canChangePopUp && !changedPopUp)
+        else if (popUpIndex == 8 && !canChangePopUp && !changedPopUp && PublicVars.pickedRed)
         {
+            waitTime = 4f;
+            StartCoroutine(ChangePopUp());
+            changedPopUp = true;
+        }
+        else if (popUpIndex == 9 && !canChangePopUp && !changedPopUp)
+        {
+            goal.SetActive(true);
+            waitTime = 4f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
             PublicVars.disableGoal = false;

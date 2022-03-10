@@ -11,4 +11,5 @@ public class PublicVars : MonoBehaviour
     public static bool pickedRed = false;
     public static bool movedPlatformFirstTime = false;
     public static bool disableGoal = false;
+    public static bool infinteJump = false;
 }
