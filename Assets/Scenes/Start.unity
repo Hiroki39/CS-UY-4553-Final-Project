@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -822,6 +822,7 @@ GameObject:
   - component: {fileID: 1517884303266200437}
   - component: {fileID: 1517884303266200434}
   - component: {fileID: 1517884303266200433}
+  - component: {fileID: 1517884303266200435}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -837,7 +838,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517884303266200432}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 5f0ae1673ae624830977e27629d52499, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 1c8e95318dd284283aa5beeaa242a2fb, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -854,7 +855,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 0.5
-  m_Url: Assets/Videos/Nebula.mp4
+  m_Url: https://github.com/Hiroki39/CS4553-Level-Design/blob/main/Assets/Videos/Nebula.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
@@ -884,13 +885,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: e8338d9042ae04dfb908337ea9c47d01, type: 3}
+  m_Texture: {fileID: 8400000, guid: b45434cb23c584feca156cecc4f3488b, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
+--- !u!114 &1517884303266200435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517884303266200432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe523f14d4a5474db8d391e0398a728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoName: Nebula.mp4
+  videoPlayer: {fileID: 0}
 --- !u!222 &1517884303266200437
 CanvasRenderer:
   m_ObjectHideFlags: 0
