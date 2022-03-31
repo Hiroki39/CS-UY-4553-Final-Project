@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-
 public class VideoController : MonoBehaviour
 {
-    public string videoName;
-	public VideoPlayer videoPlayer;
+    public string filename;
+    VideoPlayer videoplayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
-        videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, videoName);
-        videoPlayer.Play();
-        videoPlayer.isLooping = true;
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, filename);
+        videoplayer = GetComponent<VideoPlayer>();
+        videoplayer.url = filePath;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.anyKey) {
+            Play();
+        }
+    }
+
+    void Play()
+    {
+        videoplayer.Play();
+        videoplayer.isLooping = true;
     }
 }
