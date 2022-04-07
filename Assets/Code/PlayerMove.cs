@@ -28,6 +28,10 @@ public class PlayerMove : MonoBehaviour
     public AudioSource objectSound;
     public AudioClip gemEatingSound;
 
+    public TimeManager timeManager;
+
+    bool isBallSlowmo = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +73,11 @@ public class PlayerMove : MonoBehaviour
                 rend.material = Mat1;
             }
             isBlue = !isBlue;
+
+            if (isBallSlowmo) {
+                timeManager.StopSlowmotion();
+                isBallSlowmo = false;
+            }
         }
 
         if (Input.GetButtonDown("Jump") && (grounded || PublicVars.infinteJump))
@@ -175,6 +184,12 @@ public class PlayerMove : MonoBehaviour
             {
                 PublicVars.pickedYellow = true;
             }
+        }
+
+        if (other.gameObject.CompareTag("SlowmoPlane"))
+        {
+            timeManager.DoSlowmotion();
+            isBallSlowmo = true;
         }
     }
 

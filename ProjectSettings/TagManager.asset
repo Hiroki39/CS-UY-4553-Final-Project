@@ -10,6 +10,7 @@ TagManager:
   - Gem2
   - Gem3
   - Gem4
+  - SlowmoPlane
   layers:
   - Default
   - TransparentFX
