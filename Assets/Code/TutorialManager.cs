@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
     public int popUpIndex;
     public float waitTime;
     public GameObject player;
-    public PlayerMove playerScript;
+    private PlayerMove playerScript;
     public GameObject tempwall;
     public GameObject tempWall2;
     public GameObject goal;
@@ -40,7 +40,7 @@ public class TutorialManager : MonoBehaviour
         }
         if (popUpIndex == 0 && !canChangePopUp && !changedPopUp)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 StartCoroutine(ChangePopUp());
                 changedPopUp = true;
@@ -48,7 +48,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (popUpIndex == 1 && !canChangePopUp && !changedPopUp)
         {
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 StartCoroutine(ChangePopUp());
                 changedPopUp = true;

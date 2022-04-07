@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     public float[] checkPointScales;
     public GameObject bluePicked;
     Renderer rend;
+    TrailRenderer trend;
 
     Rigidbody rb;
 
@@ -37,16 +38,24 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
+        trend = GetComponent<TrailRenderer>();
 
         isBlue = checkPointIsBlues[PublicVars.checkPoint];
         if (isBlue)
         {
             rend.material = Mat1;
+            trend.startColor = Mat1.color;
+            trend.endColor = Mat1.color;
         }
         else
         {
             rend.material = Mat2;
+            trend.startColor = Mat2.color;
+            trend.endColor = Mat2.color;
         }
+        trend.enabled = false;
+        trend.time = 0.5f;
+
         transform.localScale = new Vector3(checkPointScales[PublicVars.checkPoint], checkPointScales[PublicVars.checkPoint], checkPointScales[PublicVars.checkPoint]);
         transform.position = checkPoints[PublicVars.checkPoint].transform.position + new Vector3(0, 1.5f, 0);
         StartCoroutine(WaitToMove());
@@ -67,14 +76,19 @@ public class PlayerMove : MonoBehaviour
             if (isBlue)
             {
                 rend.material = Mat2;
+                trend.startColor = Mat2.color;
+                trend.endColor = Mat2.color;
             }
             else
             {
                 rend.material = Mat1;
+                trend.startColor = Mat1.color;
+                trend.endColor = Mat1.color;
             }
             isBlue = !isBlue;
 
-            if (isBallSlowmo) {
+            if (isBallSlowmo)
+            {
                 timeManager.StopSlowmotion();
                 isBallSlowmo = false;
             }
@@ -112,6 +126,7 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
         {
             grounded = true;
+            trend.enabled = false;
         }
         if (other.gameObject.CompareTag("Ground2") && !PublicVars.movedPlatformFirstTime)
         {
@@ -127,6 +142,7 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
         {
             grounded = true;
+            trend.enabled = false;
         }
     }
 
@@ -135,6 +151,8 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
         {
             grounded = false;
+            trend.Clear();
+            trend.enabled = true;
         }
     }
 
