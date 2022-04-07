@@ -19,6 +19,10 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        for (int popUpIndex = 0; popUpIndex < popUps.Length; ++popUpIndex)
+        {
+            popUps[popUpIndex].SetActive(false);
+        }
         playerScript = player.GetComponent<PlayerMove>();
         playerScript.jumpForce = 0;
         waitTime = 2f;

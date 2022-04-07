@@ -384,7 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350895a63a271f4e99232623c1cba49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filename: Red.mp4
 --- !u!222 &69014539
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2425,7 +2424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &654539045
 Transform:
   m_ObjectHideFlags: 0
@@ -2742,7 +2741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &733187174
 Transform:
   m_ObjectHideFlags: 0
@@ -3151,7 +3150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &784164623
 Transform:
   m_ObjectHideFlags: 0
@@ -3466,7 +3465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &880069660
 Transform:
   m_ObjectHideFlags: 0
@@ -3912,7 +3911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &981075602
 Transform:
   m_ObjectHideFlags: 0
@@ -4627,7 +4626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1239558161
 Transform:
   m_ObjectHideFlags: 0
@@ -6360,7 +6359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1963216990
 Transform:
   m_ObjectHideFlags: 0
