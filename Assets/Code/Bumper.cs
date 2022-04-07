@@ -4,33 +4,45 @@ using UnityEngine;
 
 public class Bumper : MonoBehaviour
 {
-    public Material lightMat;
-    Material defaultMat;
+    // public Material lightMat;
 
     Renderer rend;
-    public GameObject redLight;
+    Color initColor;
+
+    float colorchangetime = 1f;
+
+    // public GameObject redLight;
 
     // Start is called before the first frame update
     void Start()
     {
         rend = GetComponent<Renderer>();
-        defaultMat = rend.material;
+        Debug.Log(rend.material.color);
+        initColor = rend.material.color;
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            rend.material = lightMat;
+            rend.material.color = other.gameObject.GetComponent<Renderer>().material.color;
             StartCoroutine(Revert());
-            redLight.SetActive(true);
         }
     }
 
     IEnumerator Revert()
     {
-        yield return new WaitForSeconds(.2f);
-        rend.material = defaultMat;
-        redLight.SetActive(false);
+        Color currColor = rend.material.color;
+        Debug.Log(currColor);
+        float currTime = 0;
+        while (currTime < colorchangetime)
+        {
+            currTime += Time.deltaTime / colorchangetime;
+            rend.material.color = Color.Lerp(currColor, initColor, currTime);
+            yield return null;
+        }
+        rend.material.color = initColor;
+        yield return null;
+        // redLight.SetActive(false);
     }
 }
