@@ -501,12 +501,12 @@ TextMesh:
 
 '
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -1801,12 +1801,12 @@ TextMesh:
     Don''t forget to
     change the color'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -2114,12 +2114,12 @@ TextMesh:
   m_GameObject: {fileID: 733187173}
   m_Text: Red Gem = Checkpoint
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -2398,12 +2398,12 @@ TextMesh:
 
     But don''t underestimate the minute changes'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -2708,12 +2708,12 @@ TextMesh:
 
     Size Changes are minute'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -3153,12 +3153,12 @@ TextMesh:
 
     Duh.'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -3456,12 +3456,12 @@ TextMesh:
 
     S = Move Backward'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -3643,12 +3643,12 @@ TextMesh:
 
     Explore, Escape, Godspeed!'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -4189,12 +4189,12 @@ TextMesh:
   m_GameObject: {fileID: 1608376164}
   m_Text: Space = Jump
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
@@ -4808,12 +4808,12 @@ TextMesh:
   m_GameObject: {fileID: 1963216989}
   m_Text: "The color of the ball should match \nthe color of the floor"
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 80
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
