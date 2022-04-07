@@ -11,6 +11,7 @@ TagManager:
   - Gem3
   - Gem4
   - SlowmoPlane
+  - JumpPlane
   layers:
   - Default
   - TransparentFX

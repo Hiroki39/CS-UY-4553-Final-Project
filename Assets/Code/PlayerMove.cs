@@ -33,6 +33,8 @@ public class PlayerMove : MonoBehaviour
 
     bool isBallSlowmo = false;
 
+    public bool jumped = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -208,6 +210,11 @@ public class PlayerMove : MonoBehaviour
         {
             timeManager.DoSlowmotion();
             isBallSlowmo = true;
+        }
+
+        if (other.gameObject.CompareTag("JumpPlane"))
+        {
+            jumped = true;
         }
     }
 

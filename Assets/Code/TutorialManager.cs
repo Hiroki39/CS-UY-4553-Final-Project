@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     private PlayerMove playerScript;
     public GameObject tempwall;
     public GameObject tempWall2;
+    public GameObject tempWall3;
     public GameObject goal;
 
     private void Start()
@@ -59,16 +60,18 @@ public class TutorialManager : MonoBehaviour
             playerScript.jumpForce = 5;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                waitTime = 5f;
                 StartCoroutine(ChangePopUp());
                 changedPopUp = true;
+                tempWall2.SetActive(false);
             }
         }
-        else if (popUpIndex == 3 && !canChangePopUp && !changedPopUp)
+        else if (popUpIndex == 3 && !canChangePopUp && !changedPopUp && playerScript.jumped)
         {
             waitTime = 3f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
-            tempWall2.SetActive(false);
+            tempWall3.SetActive(false);
         }
         else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && PublicVars.movedPlatformFirstTime)
         {
