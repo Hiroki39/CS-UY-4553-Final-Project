@@ -17,7 +17,6 @@ public class Bumper : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
-        Debug.Log(rend.material.color);
         initColor = rend.material.color;
     }
 
@@ -43,6 +42,5 @@ public class Bumper : MonoBehaviour
         }
         rend.material.color = initColor;
         yield return null;
-        // redLight.SetActive(false);
     }
 }
