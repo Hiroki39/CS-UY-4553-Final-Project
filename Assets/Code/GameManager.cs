@@ -60,10 +60,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void GameStart()
+    public void GameStart(string level)
     {
         PublicVars.checkPoint = 0;
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(level);
     }
 
     public void Quit()

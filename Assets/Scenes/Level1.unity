@@ -240,6 +240,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
       value: Side Panel (3)
@@ -308,7 +316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Size.y
-      value: 7
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
@@ -1011,6 +1023,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
       value: Side Panel (17)
@@ -1138,6 +1158,18 @@ PrefabInstance:
     - target: {fileID: 62277968233138852, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
@@ -4306,7 +4338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62277968233138852, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.99
+      value: 10.05
       objectReference: {fileID: 0}
     - target: {fileID: 62277968233138852, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4601,6 +4633,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
       value: Side Panel (6)
@@ -4666,6 +4706,14 @@ PrefabInstance:
     - target: {fileID: 62277968233138852, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
+      propertyPath: m_Size.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
