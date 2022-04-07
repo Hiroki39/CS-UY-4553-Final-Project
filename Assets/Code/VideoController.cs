@@ -5,13 +5,14 @@ using UnityEngine.Video;
 
 public class VideoController : MonoBehaviour
 {
-    public string filename;
+    private string[] filenames = { "Nebula.mp4", "Earth.mp4", "Multi.mp4", "Red.mp4" };
     VideoPlayer videoplayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, filename);
+        string fileName = filenames[Random.Range(0, filenames.Length)];
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
         videoplayer = GetComponent<VideoPlayer>();
         videoplayer.url = filePath;
     }
@@ -19,7 +20,8 @@ public class VideoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKey) {
+        if (Input.anyKey)
+        {
             Play();
         }
     }
