@@ -61,6 +61,10 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.y < -12)
+        {
+            isAlive = false;
+        }
         if (!isAlive)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -87,10 +91,6 @@ public class PlayerMove : MonoBehaviour
                 isBallSlowmo = false;
             }
         }
-    }
-
-    void FixedUpdate()
-    {
         if (Input.GetButtonDown("Jump") && (grounded || PublicVars.infinteJump))
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
@@ -99,11 +99,15 @@ public class PlayerMove : MonoBehaviour
         float zSpeed = Input.GetAxis("Vertical") * speed;
         float xSpeed = Input.GetAxis("Horizontal") * speed;
         rb.AddForce(new Vector3(xSpeed, 0, zSpeed));
-
-        if (transform.position.y < -12)
+        Debug.Log(rb.velocity.magnitude);
+        if (rb.velocity.magnitude > 15)
         {
-            isAlive = false;
+            rb.velocity = rb.velocity.normalized * 15;
         }
+    }
+
+    void FixedUpdate()
+    {
     }
 
     private void OnCollisionEnter(Collision other)
