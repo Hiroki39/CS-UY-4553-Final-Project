@@ -7,14 +7,11 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] popUps;
     private bool changedPopUp = false;
     private bool canChangePopUp = true;
-    private bool showTempWall = true;
     public int popUpIndex;
     public float waitTime;
     public GameObject player;
     private PlayerMove playerScript;
-    public GameObject tempwall;
-    public GameObject tempWall2;
-    public GameObject tempWall3;
+    public GameObject[] tempWalls;
     public GameObject goal;
 
     private void Start()
@@ -67,7 +64,7 @@ public class TutorialManager : MonoBehaviour
                 waitTime = 5f;
                 StartCoroutine(ChangePopUp());
                 changedPopUp = true;
-                tempWall2.SetActive(false);
+                tempWalls[0].SetActive(false);
             }
         }
         else if (popUpIndex == 3 && !canChangePopUp && !changedPopUp && playerScript.jumped)
@@ -75,11 +72,10 @@ public class TutorialManager : MonoBehaviour
             waitTime = 3f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
-            tempWall3.SetActive(false);
+            tempWalls[1].SetActive(false);
         }
         else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && PublicVars.movedPlatformFirstTime)
         {
-            showTempWall = false;
             waitTime = 1f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
@@ -113,13 +109,13 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
             PublicVars.disableGoal = false;
+            tempWalls[2].SetActive(false);
         }
     }
 
     public IEnumerator ChangePopUp()
     {
         yield return new WaitForSeconds(waitTime);
-        tempwall.SetActive(showTempWall);
         popUps[popUpIndex++].SetActive(false);
         canChangePopUp = true;
     }

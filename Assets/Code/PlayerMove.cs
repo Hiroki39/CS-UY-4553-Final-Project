@@ -5,35 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
-
-    public int playerNum = 1;
-    public int speed = 10;
-    public int jumpForce;
     public Material Mat1;
     public Material Mat2;
-
     public GameObject[] checkPoints;
     public bool[] checkPointIsBlues;
     public float[] checkPointScales;
     public GameObject bluePicked;
-    Renderer rend;
-    TrailRenderer trend;
-
-    Rigidbody rb;
-
-    bool isAlive = true;
-    bool isBlue;
-
-    bool grounded = false;
-
     public AudioSource objectSound;
     public AudioClip gemEatingSound;
-
     public TimeManager timeManager;
 
-    bool isBallSlowmo = false;
+    Renderer rend;
+    TrailRenderer trend;
+    Rigidbody rb;
 
-    public bool jumped = false;
+    [HideInInspector] public float jumpForce = 5f;
+    [HideInInspector] public bool jumped = false;
+    float speed = 12f;
+    bool isAlive = true;
+    bool isBlue;
+    bool grounded = false;
+    bool isBallSlowmo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -95,18 +87,13 @@ public class PlayerMove : MonoBehaviour
                 isBallSlowmo = false;
             }
         }
-
-        if (Input.GetButtonDown("Jump") && (grounded || PublicVars.infinteJump))
-        {
-            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-        }
     }
 
     void FixedUpdate()
     {
-        if (!isAlive)
+        if (Input.GetButtonDown("Jump") && (grounded || PublicVars.infinteJump))
         {
-            return;
+            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
 
         float zSpeed = Input.GetAxis("Vertical") * speed;
