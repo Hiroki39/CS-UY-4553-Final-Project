@@ -32,7 +32,6 @@ public class Bumper : MonoBehaviour
     IEnumerator Revert()
     {
         Color currColor = rend.material.color;
-        Debug.Log(currColor);
         float currTime = 0;
         while (currTime < colorchangetime)
         {
