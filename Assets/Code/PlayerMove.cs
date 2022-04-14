@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
 
     [HideInInspector] public float jumpForce = 5f;
     [HideInInspector] public bool jumped = false;
-    float speed = 12f;
+    float speed = 15f;
     bool isAlive = true;
     bool isBlue;
     bool grounded = false;
