@@ -567,7 +567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &114299707
 Transform:
   m_ObjectHideFlags: 0
@@ -576,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114299706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.5, y: 6.32, z: 13.5}
+  m_LocalPosition: {x: -11.56, y: 6.32, z: 13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1916551391}
@@ -590,9 +590,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114299706}
-  m_Text: 'A / Left Arrow Key = Move Left
+  m_Text: 'Left Arrow Key = Move Left
 
-    D / Right Arrow Key = Move Right
+    Right Arrow Key = Move Right
 
 '
   m_OffsetZ: 0
@@ -2150,7 +2150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &654539045
 Transform:
   m_ObjectHideFlags: 0
@@ -4059,7 +4059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163660875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.83, y: 5.87, z: 13.5}
+  m_LocalPosition: {x: -14.26, y: 5.87, z: 13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1916551391}
@@ -4073,9 +4073,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163660875}
-  m_Text: 'W / Up Arrow Key= Move Forward
+  m_Text: 'Up Arrow Key= Move Forward
 
-    S / Down Arrow Key = Move Backward'
+    Down Arrow Key = Move Backward'
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1

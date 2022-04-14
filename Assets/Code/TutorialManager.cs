@@ -42,7 +42,7 @@ public class TutorialManager : MonoBehaviour
         }
         if (popUpIndex == 0 && !canChangePopUp && !changedPopUp)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 StartCoroutine(ChangePopUp());
                 changedPopUp = true;
@@ -50,7 +50,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (popUpIndex == 1 && !canChangePopUp && !changedPopUp)
         {
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 StartCoroutine(ChangePopUp());
                 changedPopUp = true;
