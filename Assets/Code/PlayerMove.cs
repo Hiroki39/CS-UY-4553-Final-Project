@@ -21,7 +21,8 @@ public class PlayerMove : MonoBehaviour
 
     [HideInInspector] public float jumpForce = 5f;
     [HideInInspector] public bool jumped = false;
-    float speed = 15f;
+    float force = 12f;
+    float maxSpeed = 12f;
     bool isAlive = true;
     bool isBlue;
     bool grounded = false;
@@ -33,6 +34,8 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         trend = GetComponent<TrailRenderer>();
+
+        Physics.defaultContactOffset = 0.00000001f;
 
         isBlue = checkPointIsBlues[PublicVars.checkPoint];
         if (isBlue)
@@ -91,23 +94,38 @@ public class PlayerMove : MonoBehaviour
                 isBallSlowmo = false;
             }
         }
-        if (Input.GetButtonDown("Jump") && (grounded || PublicVars.infinteJump))
+        if (grounded != isGrounded())
+        {
+            if (grounded == true)
+            {
+                trend.Clear();
+                trend.enabled = true;
+            }
+            else
+            {
+                trend.enabled = false;
+            }
+            grounded = isGrounded();
+        }
+
+        if (Input.GetButtonDown("Jump") && (PublicVars.infinteJump || isGrounded()))
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
 
-        float zSpeed = Input.GetAxis("Vertical") * speed;
-        float xSpeed = Input.GetAxis("Horizontal") * speed;
+        float zSpeed = Input.GetAxis("Vertical") * force;
+        float xSpeed = Input.GetAxis("Horizontal") * force;
         rb.AddForce(new Vector3(xSpeed, 0, zSpeed));
         Debug.Log(rb.velocity.magnitude);
-        if (rb.velocity.magnitude > 15)
+        if (rb.velocity.magnitude > maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * 15;
+            rb.velocity = rb.velocity.normalized * maxSpeed;
         }
     }
 
-    void FixedUpdate()
+    bool isGrounded()
     {
+        return Physics.Raycast(transform.position, -Vector3.up, transform.localScale.y / 2 + 0.1f);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -115,11 +133,6 @@ public class PlayerMove : MonoBehaviour
         if ((other.gameObject.CompareTag("Ground1") && !isBlue) || (other.gameObject.CompareTag("Ground2") && isBlue))
         {
             isAlive = false;
-        }
-        if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
-        {
-            grounded = true;
-            trend.enabled = false;
         }
         if (other.gameObject.CompareTag("Ground2") && !PublicVars.movedPlatformFirstTime)
         {
@@ -131,21 +144,6 @@ public class PlayerMove : MonoBehaviour
         if ((other.gameObject.CompareTag("Ground1") && !isBlue) || (other.gameObject.CompareTag("Ground2") && isBlue))
         {
             isAlive = false;
-        }
-        if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
-        {
-            grounded = true;
-            trend.enabled = false;
-        }
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.CompareTag("Ground1") || other.gameObject.CompareTag("Ground2"))
-        {
-            grounded = false;
-            trend.Clear();
-            trend.enabled = true;
         }
     }
 
