@@ -112,7 +112,10 @@ public class PlayerMove : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
+    }
 
+    private void FixedUpdate()
+    {
         float zSpeed = Input.GetAxis("Vertical") * force;
         float xSpeed = Input.GetAxis("Horizontal") * force;
         rb.AddForce(new Vector3(xSpeed, 0, zSpeed));
