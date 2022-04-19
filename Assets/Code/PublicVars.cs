@@ -12,4 +12,5 @@ public class PublicVars : MonoBehaviour
     public static bool movedPlatformFirstTime = false;
     public static bool disableGoal = false;
     public static bool infinteJump = false;
+    public static int camPos = 0;
 }

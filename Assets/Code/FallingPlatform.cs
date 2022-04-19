@@ -7,7 +7,6 @@ public class FallingPlatform : MonoBehaviour
     public AudioClip platformLandingSound;
     Rigidbody rb;
     ParticleSystem ps;
-
     bool landed = false;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +28,7 @@ public class FallingPlatform : MonoBehaviour
     {
         landed = true;
         ps.Play();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         rb.isKinematic = false;
     }
 }
