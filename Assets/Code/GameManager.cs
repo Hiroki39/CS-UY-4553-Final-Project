@@ -11,19 +11,20 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         string level = SceneManager.GetActiveScene().name;
-        if (level != "Start" && level != "End")
+        if (level != "Start" && level != "End" && level != "PreStart")
         {
             Resume();
         }
-
-#if UNITY_WEBGL
-        quitBtn.gameObject.SetActive(false);
-#endif
+        else if (level == "PreStart")
+        {
+            SaveLoad.Load();
+            SceneManager.LoadScene("Start");
+        }
     }
     private void Update()
     {
         string level = SceneManager.GetActiveScene().name;
-        if (level != "Start" && level != "End")
+        if (level != "Start" && level != "End" && level != "PreStart")
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -68,6 +69,16 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        SaveLoad.Save();
+#if (UNITY_EDITOR || DEVELOPMENT_BUILD)
+        Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+#endif
+#if (UNITY_EDITOR)
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif (UNITY_STANDALONE) 
+    Application.Quit();
+#elif (UNITY_WEBGL)
+    Application.OpenURL("about:blank");
+#endif
     }
 }

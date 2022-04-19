@@ -5,6 +5,7 @@ using UnityEngine;
 public class PublicVars : MonoBehaviour
 {
     public static int checkPoint = 0;
+    public static int levelUnlocked = 0;
     public static bool paused = false;
     public static bool pickedYellow = false;
     public static bool pickedGreen = false;

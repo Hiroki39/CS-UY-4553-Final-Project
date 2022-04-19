@@ -12,6 +12,7 @@ public class NextLevel : MonoBehaviour
         if (other.CompareTag("Player") && !PublicVars.disableGoal)
         {
             PublicVars.checkPoint = 0;
+            PublicVars.levelUnlocked = Mathf.Max(PublicVars.levelUnlocked, LevelToLoad[5] - '0');
             SceneManager.LoadScene(LevelToLoad);
         }
     }

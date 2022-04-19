@@ -61,6 +61,8 @@ public class PlayerMove : MonoBehaviour
         {
             Destroy(checkPoints[i]);
         }
+
+        StartCoroutine(AutoSave());
     }
 
     void Update()
@@ -214,5 +216,14 @@ public class PlayerMove : MonoBehaviour
         bluePicked.SetActive(true);
         yield return new WaitForSeconds(3f);
         bluePicked.SetActive(false);
+    }
+
+    IEnumerator AutoSave()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f);
+            SaveLoad.Save();
+        }
     }
 }
