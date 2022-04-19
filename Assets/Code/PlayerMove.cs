@@ -53,6 +53,7 @@ public class PlayerMove : MonoBehaviour
         trend.time = 0.5f;
 
         transform.localScale = new Vector3(checkPointScales[PublicVars.checkPoint], checkPointScales[PublicVars.checkPoint], checkPointScales[PublicVars.checkPoint]);
+
         transform.position = checkPoints[PublicVars.checkPoint].transform.position + new Vector3(0, 1.5f, 0);
         StartCoroutine(WaitToMove());
         for (int i = 0; i <= PublicVars.checkPoint; ++i)
