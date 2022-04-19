@@ -12,7 +12,6 @@ public class PlayerMove : MonoBehaviour
     public float[] checkPointScales;
     public GameObject bluePicked;
     public AudioSource objectSound;
-    public AudioClip gemEatingSound;
     public TimeManager timeManager;
 
     Renderer rend;
@@ -119,7 +118,6 @@ public class PlayerMove : MonoBehaviour
         float zSpeed = Input.GetAxis("Vertical") * force;
         float xSpeed = Input.GetAxis("Horizontal") * force;
         rb.AddForce(new Vector3(xSpeed, 0, zSpeed));
-        Debug.Log(rb.velocity.magnitude);
         if (rb.velocity.magnitude > maxSpeed)
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
@@ -152,16 +150,6 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Note: we use colliders here, not collisions
-        if (other.gameObject.CompareTag("Gem1") || other.gameObject.CompareTag("Gem2") || other.gameObject.CompareTag("Gem3") || other.gameObject.CompareTag("Gem4"))
-        {
-            objectSound.PlayOneShot(gemEatingSound);
-            other.gameObject.GetComponentInChildren<ParticleSystem>().Play();
-            other.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-            other.gameObject.GetComponent<Collider>().enabled = false;
-            Destroy(other.gameObject, 0.5f);
-        }
-
         if (other.gameObject.CompareTag("Gem1"))
         {
             if (!PublicVars.infinteJump)
