@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     Renderer rend;
     TrailRenderer trend;
     Rigidbody rb;
-
+    CameraFollow cf;
     [HideInInspector] public float jumpForce = 5f;
     [HideInInspector] public bool jumped = false;
     float force = 12f;
@@ -33,6 +33,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         trend = GetComponent<TrailRenderer>();
+        cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
 
@@ -136,9 +137,13 @@ public class PlayerMove : MonoBehaviour
         {
             isAlive = false;
         }
-        if (other.gameObject.CompareTag("Ground2") && !PublicVars.movedPlatformFirstTime)
+        if (other.gameObject.CompareTag("Ground2") && !PublicVars.movedToLastPlatform)
         {
-            PublicVars.movedPlatformFirstTime = true;
+            PublicVars.movedToLastPlatform = true;
+        }
+        if (other.relativeVelocity.y > 6 && !cf.shaking)
+        {
+            StartCoroutine(cf.ShakeCamera());
         }
     }
     private void OnCollisionStay(Collision other)

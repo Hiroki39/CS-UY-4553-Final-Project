@@ -8,6 +8,8 @@ public class FallingPlatform : MonoBehaviour
     Rigidbody rb;
     ParticleSystem ps;
     bool landed = false;
+    float waitTime = 0.8f;
+    float hitVolume = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class FallingPlatform : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !landed)
         {
             AudioSource objectSound = other.gameObject.GetComponent<PlayerMove>().objectSound;
-            objectSound.PlayOneShot(platformLandingSound, 2f);
+            objectSound.PlayOneShot(platformLandingSound, hitVolume);
             StartCoroutine(Fall());
         }
     }
@@ -28,7 +30,7 @@ public class FallingPlatform : MonoBehaviour
     {
         landed = true;
         ps.Play();
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(waitTime);
         rb.isKinematic = false;
     }
 }

@@ -7,9 +7,13 @@ public class CameraFollow : MonoBehaviour
     GameObject player;
     Vector3 initOffset;
     Vector3 currOffset;
+    Vector3 shakeOffset = new Vector3(0f, 0f, 0f);
     Vector3[] rotations;
     bool rotating = false;
+    [HideInInspector] public bool shaking = false;
     float rotateTime = 1f;
+    float shakeTime = 0.15f;
+    float shakeAmplitude = 0.35f;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,8 +81,15 @@ public class CameraFollow : MonoBehaviour
     }
     void LateUpdate()
     {
-        transform.position = player.transform.position + currOffset;
-        transform.LookAt(player.transform);
+        transform.position = player.transform.position + currOffset + shakeOffset;
+        if (shaking)
+        {
+            transform.LookAt(player.transform.position + shakeOffset);
+        }
+        else
+        {
+            transform.LookAt(player.transform.position);
+        }
     }
 
     IEnumerator RotateCamera(int start, int end)
@@ -90,7 +101,7 @@ public class CameraFollow : MonoBehaviour
         float currTime = 0;
         while (currTime < rotateTime)
         {
-            currTime += Time.deltaTime / rotateTime;
+            currTime += Time.deltaTime;
             currOffset = Vector3.Lerp(startOffset, endOffset, currTime);
             yield return null;
         }
@@ -98,5 +109,21 @@ public class CameraFollow : MonoBehaviour
         rotating = false;
         PublicVars.camPos = end;
         yield return null;
+    }
+
+    // called by PlayerMove.cs
+    public IEnumerator ShakeCamera()
+    {
+        shaking = true;
+        float currTime = 0;
+        while (currTime < shakeTime)
+        {
+            currTime += Time.deltaTime;
+            shakeOffset = Random.insideUnitSphere * shakeAmplitude;
+            yield return null;
+        }
+        shakeOffset = new Vector3(0f, 0f, 0f);
+        shaking = false;
+        yield return false;
     }
 }

@@ -74,7 +74,7 @@ public class TutorialManager : MonoBehaviour
             changedPopUp = true;
             tempWalls[1].SetActive(false);
         }
-        else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && PublicVars.movedPlatformFirstTime)
+        else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && PublicVars.movedToLastPlatform)
         {
             waitTime = 1f;
             StartCoroutine(ChangePopUp());

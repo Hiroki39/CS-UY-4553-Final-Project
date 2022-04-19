@@ -5,10 +5,11 @@ using UnityEngine;
 public class Gem : MonoBehaviour
 {
     public AudioClip gemEatingSound;
-    int rotateSpeed = 30;
     ParticleSystem ps;
     Renderer rend;
     Collider coll;
+    int rotateSpeed = 30;
+    float hitVolume = 2f;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class Gem : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             AudioSource objectSound = other.gameObject.GetComponent<PlayerMove>().objectSound;
-            objectSound.PlayOneShot(gemEatingSound, 2f);
+            objectSound.PlayOneShot(gemEatingSound, hitVolume);
             ps.Play();
             rend.enabled = false;
             coll.enabled = false;

@@ -9,7 +9,7 @@ public class PublicVars : MonoBehaviour
     public static bool pickedYellow = false;
     public static bool pickedGreen = false;
     public static bool pickedRed = false;
-    public static bool movedPlatformFirstTime = false;
+    public static bool movedToLastPlatform = false;
     public static bool disableGoal = false;
     public static bool infinteJump = false;
     public static int camPos = 0;
