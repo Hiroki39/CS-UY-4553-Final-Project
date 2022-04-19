@@ -14,4 +14,5 @@ public class PublicVars : MonoBehaviour
     public static bool disableGoal = false;
     public static bool infinteJump = false;
     public static int camPos = 0;
+    public static float timer = 0;
 }

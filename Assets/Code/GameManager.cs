@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         string level = SceneManager.GetActiveScene().name;
+        PublicVars.timer = 0;
         if (level.Substring(0, 5) == "Level")
         {
             PublicVars.checkPoint = 0;
