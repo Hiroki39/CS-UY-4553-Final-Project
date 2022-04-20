@@ -26,6 +26,9 @@ public class PlayerMove : MonoBehaviour
     bool isBlue;
     bool grounded = false;
     bool isBallSlowmo = false;
+    float jumpTimer;
+    float jumpDelay = 0.25f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -111,9 +114,9 @@ public class PlayerMove : MonoBehaviour
             grounded = isGrounded();
         }
 
-        if (Input.GetButtonDown("Jump") && (PublicVars.infinteJump || isGrounded()))
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            jumpTimer = Time.time + jumpDelay;
         }
     }
 
@@ -125,6 +128,11 @@ public class PlayerMove : MonoBehaviour
         if (rb.velocity.magnitude > maxSpeed)
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
+        if (jumpTimer > Time.time && (PublicVars.infinteJump || grounded))
+        {
+            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            jumpTimer = 0;
         }
     }
 
