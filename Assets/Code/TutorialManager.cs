@@ -104,16 +104,12 @@ public class TutorialManager : MonoBehaviour
         {
             pickedRed = true;
         }
-
         if (other.gameObject.CompareTag("Gem3"))
         {
-            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
             pickedGreen = true;
         }
-
         if (other.gameObject.CompareTag("Gem4"))
         {
-            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
             pickedYellow = true;
         }
         if (other.gameObject.CompareTag("Ground2") && !movedToLastPlatform)
