@@ -55,30 +55,34 @@ public class TutorialManager : MonoBehaviour
                     tempWalls[0].SetActive(false);
                 }
             }
-            else if (popUpIndex == 3)
+            else if (popUpIndex == 3) 
+            {
+                //if (Input.GetKeyDown(KeyCode.E))
+                //{
+                Debug.Log("Popup 3 Test");
+                StartCoroutine(ChangePopUp(2f));
+                //}
+            }
+            else if (popUpIndex == 4)
             {
                 StartCoroutine(ChangePopUp(3f));
                 tempWalls[1].SetActive(false);
             }
-            else if (popUpIndex == 4 && movedToLastPlatform)
+            else if (popUpIndex == 5 && movedToLastPlatform)
             {
                 StartCoroutine(ChangePopUp(1f));
             }
-            else if (popUpIndex == 5 && pickedYellow)
+            else if (popUpIndex == 6 && pickedYellow)
             {
                 StartCoroutine(ChangePopUp(3f));
             }
-            else if (popUpIndex == 6 && pickedGreen)
+            else if (popUpIndex == 7 && pickedGreen)
             {
                 StartCoroutine(ChangePopUp(3f));
             }
-            else if (popUpIndex == 7 && pickedRed)
+            else if (popUpIndex == 8 && pickedRed)
             {
                 StartCoroutine(ChangePopUp(3f));
-            }
-            else if (popUpIndex == 8)
-            {
-                StartCoroutine(ChangePopUp(4f));
             }
             else if (popUpIndex == 9)
             {
@@ -86,9 +90,13 @@ public class TutorialManager : MonoBehaviour
             }
             else if (popUpIndex == 10)
             {
-                StartCoroutine(ChangePopUp(2f));
+                StartCoroutine(ChangePopUp(4f));
             }
             else if (popUpIndex == 11)
+            {
+                StartCoroutine(ChangePopUp(2f));
+            }
+            else if (popUpIndex == 12)
             {
                 goal.SetActive(true);
                 tempWalls[2].SetActive(false);
@@ -98,6 +106,7 @@ public class TutorialManager : MonoBehaviour
 
     public IEnumerator ChangePopUp(float waitTime)
     {
+        Debug.Log(popUpIndex);
         popUpChanging = true;
         yield return new WaitForSeconds(waitTime);
         popUps[popUpIndex++].SetActive(false);
