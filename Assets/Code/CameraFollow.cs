@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     GameObject player;
-    Vector3 initOffset;
+    Vector3 initOffset = new Vector3(0f, 5.5f, -10f);
     Vector3 currOffset;
     Vector3 shakeOffset = new Vector3(0f, 0f, 0f);
     Vector3[] rotations;
@@ -18,7 +18,6 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        initOffset = transform.position - player.transform.position;
         rotations = new Vector3[]{initOffset,
                 Quaternion.Euler(0, 45, 0) * initOffset,
                 Quaternion.Euler(30, 0, 0) * initOffset,

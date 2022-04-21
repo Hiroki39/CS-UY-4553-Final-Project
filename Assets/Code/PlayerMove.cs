@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
     bool isAlive = true;
     bool isBlue;
     bool grounded = false;
+    bool infiniteJump = false;
     // bool isBallSlowmo = false;
     float jumpTimer;
     float jumpDelay = 0.25f;
@@ -160,7 +161,7 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
-        if (jumpTimer > Time.time && (PublicVars.infinteJump || grounded))
+        if (jumpTimer > Time.time && (infiniteJump || grounded))
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             jumpTimer = 0;
@@ -177,10 +178,6 @@ public class PlayerMove : MonoBehaviour
         if ((other.gameObject.CompareTag("Ground1") && !isBlue) || (other.gameObject.CompareTag("Ground2") && isBlue))
         {
             isAlive = false;
-        }
-        if (other.gameObject.CompareTag("Ground2") && !PublicVars.movedToLastPlatform)
-        {
-            PublicVars.movedToLastPlatform = true;
         }
         if (other.relativeVelocity.y > 6 && !cf.shaking)
         {
@@ -199,16 +196,17 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gem1"))
         {
-            if (!PublicVars.infinteJump)
+            if (!infiniteJump)
             {
                 StartCoroutine(BlueGemFirstTime());
-                PublicVars.infinteJump = true;
+                infiniteJump = true;
             }
         }
 
         if (other.gameObject.CompareTag("Gem2"))
         {
             ++PublicVars.checkPoint;
+            Debug.Log(PublicVars.checkPoint);
         }
 
         if (other.gameObject.CompareTag("Gem3"))

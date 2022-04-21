@@ -7,8 +7,6 @@ public class PublicVars : MonoBehaviour
     public static int checkPoint = 0;
     public static int levelUnlocked = 0;
     public static bool paused = false;
-    public static bool movedToLastPlatform = false;
-    public static bool infinteJump = false;
     public static int camPos = 0;
     public static float timer = 0;
     public static int numLevel = 3;

@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
     bool pickedYellow = false;
     bool pickedGreen = false;
     bool pickedRed = false;
+    bool movedToLastPlatform = false;
     int popUpIndex = 0;
     private void Start()
     {
@@ -57,7 +58,7 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(ChangePopUp(3f));
                 tempWalls[1].SetActive(false);
             }
-            else if (popUpIndex == 4 && PublicVars.movedToLastPlatform)
+            else if (popUpIndex == 4 && movedToLastPlatform)
             {
                 StartCoroutine(ChangePopUp(1f));
             }
@@ -114,6 +115,10 @@ public class TutorialManager : MonoBehaviour
         {
             transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
             pickedYellow = true;
+        }
+        if (other.gameObject.CompareTag("Ground2") && !movedToLastPlatform)
+        {
+            movedToLastPlatform = true;
         }
     }
 }
