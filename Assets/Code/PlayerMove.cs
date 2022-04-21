@@ -15,8 +15,6 @@ public class PlayerMove : MonoBehaviour
     public TimeManager timeManager;
     public int totalSlowmoDefault = 3;
     [HideInInspector] public float jumpForce = 6f;
-    [HideInInspector] public bool jumped = false;
-
     Renderer rend;
     TrailRenderer trend;
     Rigidbody rb;
@@ -224,11 +222,6 @@ public class PlayerMove : MonoBehaviour
         //     timeManager.DoSlowmotion();
         //     isBallSlowmo = true;
         // }
-
-        if (other.gameObject.CompareTag("JumpPlane"))
-        {
-            jumped = true;
-        }
     }
 
     IEnumerator WaitToMove()

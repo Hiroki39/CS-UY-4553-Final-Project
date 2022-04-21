@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     bool pickedGreen = false;
     bool pickedRed = false;
     bool movedToLastPlatform = false;
+    // bool jumped = false;
     int popUpIndex = 0;
     private void Start()
     {
@@ -129,5 +130,9 @@ public class TutorialManager : MonoBehaviour
         {
             pickedYellow = true;
         }
+        // if (other.gameObject.CompareTag("JumpPlane"))
+        // {
+        //     jumped = true;
+        // }
     }
 }
