@@ -25,6 +25,12 @@ public class FallingPlatform : MonoBehaviour
             objectSound.PlayOneShot(platformLandingSound, hitVolume);
             StartCoroutine(Fall());
         }
+        if (other.gameObject.CompareTag("PlayerEx") && !landed)
+        {
+            AudioSource objectSound = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().objectSound;
+            objectSound.PlayOneShot(platformLandingSound, hitVolume);
+            StartCoroutine(Fall());
+        }
     }
     IEnumerator Fall()
     {

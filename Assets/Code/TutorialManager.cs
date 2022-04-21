@@ -18,6 +18,7 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         goal.SetActive(false);
+        popUps[0].SetActive(true);
         for (int i = 1; i < popUps.Length; ++i)
         {
             popUps[i].SetActive(false);
@@ -80,8 +81,15 @@ public class TutorialManager : MonoBehaviour
             }
             else if (popUpIndex == 9)
             {
-                goal.SetActive(true);
                 StartCoroutine(ChangePopUp(4f));
+            }
+            else if (popUpIndex == 10)
+            {
+                StartCoroutine(ChangePopUp(2f));
+            }
+            else if (popUpIndex == 11)
+            {
+                goal.SetActive(true);
                 tempWalls[2].SetActive(false);
             }
         }
@@ -98,6 +106,15 @@ public class TutorialManager : MonoBehaviour
         }
         popUpChanging = false;
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground2") && !movedToLastPlatform)
+        {
+            movedToLastPlatform = true;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Gem2"))
@@ -111,10 +128,6 @@ public class TutorialManager : MonoBehaviour
         if (other.gameObject.CompareTag("Gem4"))
         {
             pickedYellow = true;
-        }
-        if (other.gameObject.CompareTag("Ground2") && !movedToLastPlatform)
-        {
-            movedToLastPlatform = true;
         }
     }
 }
