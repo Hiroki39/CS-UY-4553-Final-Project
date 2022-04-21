@@ -31,7 +31,7 @@ public class Gem : MonoBehaviour
             ps.Play();
             rend.enabled = false;
             coll.enabled = false;
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 2.0f);
         }
     }
 }

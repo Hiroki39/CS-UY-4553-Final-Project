@@ -67,42 +67,51 @@ public class TutorialManager : MonoBehaviour
                 tempWalls[0].SetActive(false);
             }
         }
-        else if (popUpIndex == 3 && !canChangePopUp && !changedPopUp && playerScript.jumped)
+        else if (popUpIndex == 3 && !canChangePopUp && !changedPopUp) 
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                waitTime = 2f;
+                StartCoroutine(ChangePopUp());
+                changedPopUp = true;
+            }
+        }
+        else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && playerScript.jumped)
         {
             waitTime = 3f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
             tempWalls[1].SetActive(false);
         }
-        else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && PublicVars.movedToLastPlatform)
+        else if (popUpIndex == 5 && !canChangePopUp && !changedPopUp && PublicVars.movedToLastPlatform)
         {
             waitTime = 1f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 5 && !canChangePopUp && !changedPopUp && PublicVars.pickedYellow)
+        else if (popUpIndex == 6 && !canChangePopUp && !changedPopUp && PublicVars.pickedYellow)
         {
             waitTime = 3f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 6 && !canChangePopUp && !changedPopUp && PublicVars.pickedGreen)
-        {
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-        }
-        else if (popUpIndex == 7 && !canChangePopUp && !changedPopUp && PublicVars.pickedRed)
+        else if (popUpIndex == 7 && !canChangePopUp && !changedPopUp && PublicVars.pickedGreen)
         {
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
         else if (popUpIndex == 8 && !canChangePopUp && !changedPopUp && PublicVars.pickedRed)
         {
+            StartCoroutine(ChangePopUp());
+            changedPopUp = true;
+        }
+        else if (popUpIndex == 9 && !canChangePopUp && !changedPopUp && PublicVars.pickedRed)
+        {
             waitTime = 4f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
         }
-        else if (popUpIndex == 9 && !canChangePopUp && !changedPopUp)
+        else if (popUpIndex == 10 && !canChangePopUp && !changedPopUp)
         {
             goal.SetActive(true);
             waitTime = 4f;
