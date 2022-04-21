@@ -13,25 +13,24 @@ public class PlayerMove : MonoBehaviour
     public GameObject bluePicked;
     public AudioSource objectSound;
     public TimeManager timeManager;
+    public int totalSlowmoDefault = 3;
+    [HideInInspector] public float jumpForce = 5f;
+    [HideInInspector] public bool jumped = false;
 
     Renderer rend;
     TrailRenderer trend;
     Rigidbody rb;
     CameraFollow cf;
-    [HideInInspector] public float jumpForce = 5f;
-    [HideInInspector] public bool jumped = false;
+    ParticleSystem ps;
     float force = 12f;
     float maxSpeed = 12f;
     bool isAlive = true;
     bool isBlue;
     bool grounded = false;
-    bool isBallSlowmo = false;
+    // bool isBallSlowmo = false;
     float jumpTimer;
     float jumpDelay = 0.25f;
-
     bool isBallSlowmoActive = false;
-    public int totalSlowmoDefault = 3;
-    ParticleSystem slowmoEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +38,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         trend = GetComponent<TrailRenderer>();
+        ps = GetComponentInChildren<ParticleSystem>();
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
@@ -84,11 +84,11 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && isBallSlowmoActive == false)
         {
-            if (totalSlowmoDefault > 0) {
+            if (totalSlowmoDefault > 0)
+            {
                 isBallSlowmoActive = true;
                 totalSlowmoDefault -= 1;
-                slowmoEffect = GetComponentInChildren<ParticleSystem>();
-                slowmoEffect.Play();
+                ps.Play();
             }
         }
 
@@ -132,7 +132,8 @@ public class PlayerMove : MonoBehaviour
         {
             jumpTimer = Time.time + jumpDelay;
 
-            if (isBallSlowmoActive) {
+            if (isBallSlowmoActive)
+            {
                 Invoke("DoSlowmo", 0.5f);
                 isBallSlowmoActive = false;
                 Invoke("StopSlowmo", 0.6f);
@@ -140,11 +141,13 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void DoSlowmo() {
+    void DoSlowmo()
+    {
         timeManager.DoSlowmotion();
     }
 
-    void StopSlowmo() {
+    void StopSlowmo()
+    {
         timeManager.StopSlowmotion();
     }
 

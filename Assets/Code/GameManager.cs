@@ -30,18 +30,21 @@ public class GameManager : MonoBehaviour
             {
                 if (PublicVars.paused)
                 {
-                    pauseMenu.SetActive(false);
-                    PublicVars.paused = false;
-                    Time.timeScale = 1;
+                    Resume();
                 }
                 else
                 {
-                    pauseMenu.SetActive(true);
-                    PublicVars.paused = true;
-                    Time.timeScale = 0;
+                    Pause();
                 }
             }
         }
+    }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        PublicVars.paused = true;
+        Time.timeScale = 0;
     }
 
     public void Resume()
