@@ -11,8 +11,9 @@ public class PublicVars : MonoBehaviour
     public static bool pickedGreen = false;
     public static bool pickedRed = false;
     public static bool movedToLastPlatform = false;
-    public static bool disableGoal = false;
     public static bool infinteJump = false;
     public static int camPos = 0;
     public static float timer = 0;
+    public static int numLevel = 3;
+    public static float[] personalBest = new float[numLevel];
 }

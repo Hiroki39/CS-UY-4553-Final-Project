@@ -2220,26 +2220,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finish Line
       objectReference: {fileID: 0}
+    - target: {fileID: 2014456330420848889, guid: 0166cd62c29034b1d84c2da506ca2ad6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0166cd62c29034b1d84c2da506ca2ad6, type: 3}
---- !u!1 &593792317 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2014456330420848889, guid: 0166cd62c29034b1d84c2da506ca2ad6, type: 3}
-  m_PrefabInstance: {fileID: 593792316}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &593792318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593792317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be9071a4b00c94510a77fcbb5317a816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelToLoad: Level3
 --- !u!1001 &599642712
 PrefabInstance:
   m_ObjectHideFlags: 0

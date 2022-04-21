@@ -5,16 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
-    public string LevelToLoad;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !PublicVars.disableGoal)
+        if (other.CompareTag("Player"))
         {
+            int currLevel = SceneManager.GetActiveScene().name[5] - '0';
+            if (PublicVars.personalBest[currLevel - 1] > 0)
+            {
+                PublicVars.personalBest[currLevel - 1] = Mathf.Min(PublicVars.personalBest[currLevel - 1], PublicVars.timer);
+            }
+            else
+            {
+                PublicVars.personalBest[currLevel - 1] = PublicVars.timer;
+            }
             PublicVars.checkPoint = 0;
             PublicVars.timer = 0;
-            PublicVars.levelUnlocked = Mathf.Max(PublicVars.levelUnlocked, LevelToLoad[5] - '0');
-            SceneManager.LoadScene(LevelToLoad);
+
+            if (currLevel < PublicVars.numLevel)
+            {
+                PublicVars.levelUnlocked = Mathf.Max(PublicVars.levelUnlocked, currLevel + 1);
+                SceneManager.LoadScene("Level" + (currLevel + 1).ToString());
+            }
+            else
+            {
+                SceneManager.LoadScene("End");
+            }
         }
     }
 }

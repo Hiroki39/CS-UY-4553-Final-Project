@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        goal.SetActive(false);
         for (int popUpIndex = 0; popUpIndex < popUps.Length; ++popUpIndex)
         {
             popUps[popUpIndex].SetActive(false);
@@ -23,7 +24,6 @@ public class TutorialManager : MonoBehaviour
         playerScript = player.GetComponent<PlayerMove>();
         playerScript.jumpForce = 0;
         waitTime = 2f;
-        PublicVars.disableGoal = true;
     }
 
     private void Update()
@@ -108,7 +108,6 @@ public class TutorialManager : MonoBehaviour
             waitTime = 4f;
             StartCoroutine(ChangePopUp());
             changedPopUp = true;
-            PublicVars.disableGoal = false;
             tempWalls[2].SetActive(false);
         }
     }

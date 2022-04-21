@@ -7,9 +7,11 @@ public class GameData
 {
     public int levelUnlocked;
     public int camPos;
-    public GameData(int levelUnlockedInt, int camPosInt)
+    public float[] personalBest;
+    public GameData(int levelUnlockedInt, int camPosInt, float[] personalBestFloats)
     {
         levelUnlocked = levelUnlockedInt;
         camPos = camPosInt;
+        personalBest = personalBestFloats;
     }
 }

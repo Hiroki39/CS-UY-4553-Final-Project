@@ -15,7 +15,7 @@ public static class SaveLoad
         if (File.Exists(destination)) file = File.OpenWrite(destination);
         else file = File.Create(destination);
 
-        GameData data = new GameData(PublicVars.levelUnlocked, PublicVars.camPos);
+        GameData data = new GameData(PublicVars.levelUnlocked, PublicVars.camPos, PublicVars.personalBest);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
@@ -36,6 +36,7 @@ public static class SaveLoad
 
             PublicVars.levelUnlocked = data.levelUnlocked;
             PublicVars.camPos = data.camPos;
+            PublicVars.personalBest = data.personalBest;
         }
     }
 }
