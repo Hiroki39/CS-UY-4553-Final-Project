@@ -27,8 +27,7 @@ public class PlayerMove : MonoBehaviour
     bool isBlue;
     bool grounded = false;
     bool infiniteJump = false;
-    // bool isBallSlowmo = false;
-    bool isBallSlowmoActive = false;
+    bool isSlowmoActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -80,11 +79,11 @@ public class PlayerMove : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isBallSlowmoActive == false)
+        if (Input.GetKeyDown(KeyCode.E) && !isSlowmoActive)
         {
             if (totalSlowmoDefault > 0)
             {
-                isBallSlowmoActive = true;
+                isSlowmoActive = true;
                 totalSlowmoDefault -= 1;
                 ps.Play();
             }
@@ -105,12 +104,6 @@ public class PlayerMove : MonoBehaviour
                 trend.endColor = Mat1.color;
             }
             isBlue = !isBlue;
-
-            // if (isBallSlowmo)
-            // {
-            //     timeManager.StopSlowmotion();
-            //     isBallSlowmo = false;
-            // }
         }
         if (grounded != isGrounded())
         {
@@ -126,25 +119,19 @@ public class PlayerMove : MonoBehaviour
             grounded = isGrounded();
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isSlowmoActive && grounded)
         {
-            if (isBallSlowmoActive)
-            {
-                Invoke("DoSlowmo", 0.5f);
-                isBallSlowmoActive = false;
-                Invoke("StopSlowmo", 0.6f);
-            }
+            StartCoroutine(DoSlowmo());
         }
     }
 
-    void DoSlowmo()
+    IEnumerator DoSlowmo()
     {
+        yield return new WaitForSeconds(0.5f);
         timeManager.DoSlowmotion();
-    }
-
-    void StopSlowmo()
-    {
+        yield return new WaitForSeconds(0.6f * timeManager.slowdownFactor);
         timeManager.StopSlowmotion();
+        isSlowmoActive = false;
     }
 
     private void FixedUpdate()
@@ -156,7 +143,7 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && grounded)
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
