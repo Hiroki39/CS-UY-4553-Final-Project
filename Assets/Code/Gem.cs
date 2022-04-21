@@ -8,12 +8,14 @@ public class Gem : MonoBehaviour
     ParticleSystem ps;
     Renderer rend;
     Collider coll;
+    Light lgt;
     int rotateSpeed = 30;
     float hitVolume = 2f;
 
     void Start()
     {
         ps = GetComponentInChildren<ParticleSystem>();
+        lgt = GetComponentInChildren<Light>();
         rend = GetComponent<Renderer>();
         coll = GetComponent<Collider>();
     }
@@ -31,6 +33,7 @@ public class Gem : MonoBehaviour
             ps.Play();
             rend.enabled = false;
             coll.enabled = false;
+            lgt.enabled = false;
             Destroy(gameObject, 2.0f);
         }
     }
