@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     TrailRenderer trend;
     Rigidbody rb;
     CameraFollow cf;
-    [HideInInspector] public float jumpForce = 5f;
+    [HideInInspector] public float jumpForce = 6f;
     [HideInInspector] public bool jumped = false;
     float force = 12f;
     float maxSpeed = 12f;

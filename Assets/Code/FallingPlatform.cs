@@ -8,7 +8,7 @@ public class FallingPlatform : MonoBehaviour
     Rigidbody rb;
     ParticleSystem ps;
     bool landed = false;
-    float waitTime = 0.8f;
+    float waitTime = 0.5f;
     float hitVolume = 2f;
     // Start is called before the first frame update
     void Start()
