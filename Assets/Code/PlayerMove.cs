@@ -150,6 +150,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (readyToJump)
         {
+            readyToJump = false;
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
     }
