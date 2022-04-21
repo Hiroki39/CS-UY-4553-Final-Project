@@ -5,126 +5,115 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
-    private bool changedPopUp = false;
-    private bool canChangePopUp = true;
-    public int popUpIndex;
-    public float waitTime;
-    public GameObject player;
     private PlayerMove playerScript;
     public GameObject[] tempWalls;
     public GameObject goal;
 
+    bool popUpChanging = false;
+    bool pickedYellow = false;
+    bool pickedGreen = false;
+    bool pickedRed = false;
+    int popUpIndex = 0;
     private void Start()
     {
         goal.SetActive(false);
-        for (int popUpIndex = 0; popUpIndex < popUps.Length; ++popUpIndex)
+        for (int i = 1; i < popUps.Length; ++i)
         {
-            popUps[popUpIndex].SetActive(false);
+            popUps[i].SetActive(false);
         }
-        playerScript = player.GetComponent<PlayerMove>();
+        playerScript = GetComponent<PlayerMove>();
         playerScript.jumpForce = 0;
-        waitTime = 2f;
     }
 
     private void Update()
     {
-        for (int i = 0; i < popUps.Length; i++)
+        if (!popUpChanging)
         {
-            if (i == popUpIndex)
+            if (popUpIndex == 0)
             {
-                if (canChangePopUp)
+                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    canChangePopUp = false;
-                    changedPopUp = false;
-                    popUps[popUpIndex].SetActive(true);
+                    StartCoroutine(ChangePopUp(2f));
                 }
             }
-        }
-        if (popUpIndex == 0 && !canChangePopUp && !changedPopUp)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            else if (popUpIndex == 1)
             {
-                StartCoroutine(ChangePopUp());
-                changedPopUp = true;
+                if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    StartCoroutine(ChangePopUp(2f));
+                }
             }
-        }
-        else if (popUpIndex == 1 && !canChangePopUp && !changedPopUp)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+            else if (popUpIndex == 2)
             {
-                StartCoroutine(ChangePopUp());
-                changedPopUp = true;
+                playerScript.jumpForce = 5;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    StartCoroutine(ChangePopUp(5f));
+                    tempWalls[0].SetActive(false);
+                }
             }
-        }
-        else if (popUpIndex == 2 && !canChangePopUp && !changedPopUp)
-        {
-            playerScript.jumpForce = 6f;
-            if (Input.GetKeyDown(KeyCode.Space))
+            else if (popUpIndex == 3)
             {
-                waitTime = 5f;
-                StartCoroutine(ChangePopUp());
-                changedPopUp = true;
-                tempWalls[0].SetActive(false);
+                StartCoroutine(ChangePopUp(3f));
+                tempWalls[1].SetActive(false);
             }
-        }
-        else if (popUpIndex == 3 && !canChangePopUp && !changedPopUp) 
-        {
-            if (Input.GetKeyDown(KeyCode.E))
+            else if (popUpIndex == 4 && PublicVars.movedToLastPlatform)
             {
-                waitTime = 2f;
-                StartCoroutine(ChangePopUp());
-                changedPopUp = true;
+                StartCoroutine(ChangePopUp(1f));
             }
-        }
-        else if (popUpIndex == 4 && !canChangePopUp && !changedPopUp && playerScript.jumped)
-        {
-            waitTime = 3f;
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-            tempWalls[1].SetActive(false);
-        }
-        else if (popUpIndex == 5 && !canChangePopUp && !changedPopUp && PublicVars.movedToLastPlatform)
-        {
-            waitTime = 1f;
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-        }
-        else if (popUpIndex == 6 && !canChangePopUp && !changedPopUp && PublicVars.pickedYellow)
-        {
-            waitTime = 3f;
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-        }
-        else if (popUpIndex == 7 && !canChangePopUp && !changedPopUp && PublicVars.pickedGreen)
-        {
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-        }
-        else if (popUpIndex == 8 && !canChangePopUp && !changedPopUp && PublicVars.pickedRed)
-        {
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-        }
-        else if (popUpIndex == 9 && !canChangePopUp && !changedPopUp && PublicVars.pickedRed)
-        {
-            waitTime = 4f;
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-        }
-        else if (popUpIndex == 10 && !canChangePopUp && !changedPopUp)
-        {
-            goal.SetActive(true);
-            waitTime = 4f;
-            StartCoroutine(ChangePopUp());
-            changedPopUp = true;
-            tempWalls[2].SetActive(false);
+            else if (popUpIndex == 5 && pickedYellow)
+            {
+                StartCoroutine(ChangePopUp(3f));
+            }
+            else if (popUpIndex == 6 && pickedGreen)
+            {
+                StartCoroutine(ChangePopUp(3f));
+            }
+            else if (popUpIndex == 7 && pickedRed)
+            {
+                StartCoroutine(ChangePopUp(3f));
+            }
+            else if (popUpIndex == 8)
+            {
+                StartCoroutine(ChangePopUp(4f));
+            }
+            else if (popUpIndex == 9)
+            {
+                goal.SetActive(true);
+                StartCoroutine(ChangePopUp(4f));
+                tempWalls[2].SetActive(false);
+            }
         }
     }
 
-    public IEnumerator ChangePopUp()
+    public IEnumerator ChangePopUp(float waitTime)
     {
+        popUpChanging = true;
         yield return new WaitForSeconds(waitTime);
         popUps[popUpIndex++].SetActive(false);
-        canChangePopUp = true;
+        if (popUpIndex < popUps.Length)
+        {
+            popUps[popUpIndex].SetActive(true);
+        }
+        popUpChanging = false;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Gem2"))
+        {
+            pickedRed = true;
+        }
+
+        if (other.gameObject.CompareTag("Gem3"))
+        {
+            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            pickedGreen = true;
+        }
+
+        if (other.gameObject.CompareTag("Gem4"))
+        {
+            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            pickedYellow = true;
+        }
     }
 }

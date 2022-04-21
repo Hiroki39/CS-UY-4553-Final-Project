@@ -209,28 +209,16 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Gem2"))
         {
             ++PublicVars.checkPoint;
-            if (!PublicVars.pickedRed)
-            {
-                PublicVars.pickedRed = true;
-            }
         }
 
         if (other.gameObject.CompareTag("Gem3"))
         {
             transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-            if (!PublicVars.pickedGreen)
-            {
-                PublicVars.pickedGreen = true;
-            }
         }
 
         if (other.gameObject.CompareTag("Gem4"))
         {
             transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
-            if (!PublicVars.pickedYellow)
-            {
-                PublicVars.pickedYellow = true;
-            }
         }
 
         // if (other.gameObject.CompareTag("SlowmoPlane"))

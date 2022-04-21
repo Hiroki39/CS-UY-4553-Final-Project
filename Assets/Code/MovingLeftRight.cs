@@ -21,20 +21,4 @@ public class MovingLeftRight : MonoBehaviour
         newPosition.x = Mathf.SmoothStep(startX - distance, startX + distance, Mathf.PingPong(Time.time * speed, 1));
         transform.position = newPosition;
     }
-
-    // void OnCollisionEnter(Collision other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         other.transform.SetParent(transform);
-    //     }
-    // }
-
-    // void OnCollisionExit(Collision other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         other.transform.SetParent(null);
-    //     }
-    // }
 }
