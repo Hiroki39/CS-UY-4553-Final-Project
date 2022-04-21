@@ -29,6 +29,9 @@ public class PlayerMove : MonoBehaviour
     float jumpTimer;
     float jumpDelay = 0.25f;
 
+    bool isBallSlowmoActive = false;
+    public int totalSlowmoDefault = 3;
+    ParticleSystem slowmoEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +81,17 @@ public class PlayerMove : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && isBallSlowmoActive == false)
+        {
+            if (totalSlowmoDefault > 0) {
+                isBallSlowmoActive = true;
+                totalSlowmoDefault -= 1;
+                slowmoEffect = GetComponentInChildren<ParticleSystem>();
+                slowmoEffect.Play();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (isBlue)
@@ -94,11 +108,11 @@ public class PlayerMove : MonoBehaviour
             }
             isBlue = !isBlue;
 
-            if (isBallSlowmo)
-            {
-                timeManager.StopSlowmotion();
-                isBallSlowmo = false;
-            }
+            // if (isBallSlowmo)
+            // {
+            //     timeManager.StopSlowmotion();
+            //     isBallSlowmo = false;
+            // }
         }
         if (grounded != isGrounded())
         {
@@ -117,7 +131,21 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumpTimer = Time.time + jumpDelay;
+
+            if (isBallSlowmoActive) {
+                Invoke("DoSlowmo", 0.5f);
+                isBallSlowmoActive = false;
+                Invoke("StopSlowmo", 0.6f);
+            }
         }
+    }
+
+    void DoSlowmo() {
+        timeManager.DoSlowmotion();
+    }
+
+    void StopSlowmo() {
+        timeManager.StopSlowmotion();
     }
 
     private void FixedUpdate()
@@ -202,11 +230,11 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("SlowmoPlane"))
-        {
-            timeManager.DoSlowmotion();
-            isBallSlowmo = true;
-        }
+        // if (other.gameObject.CompareTag("SlowmoPlane"))
+        // {
+        //     timeManager.DoSlowmotion();
+        //     isBallSlowmo = true;
+        // }
 
         if (other.gameObject.CompareTag("JumpPlane"))
         {
