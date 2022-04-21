@@ -26,6 +26,7 @@ public class PlayerMove : MonoBehaviour
     bool isAlive = true;
     bool isBlue;
     bool grounded = false;
+    bool readyToJump = false;
     bool infiniteJump = false;
     bool isSlowmoActive = false;
 
@@ -119,9 +120,13 @@ public class PlayerMove : MonoBehaviour
             grounded = isGrounded();
         }
 
-        if (Input.GetButtonDown("Jump") && isSlowmoActive && grounded)
+        if (Input.GetButtonDown("Jump") && grounded)
         {
-            StartCoroutine(DoSlowmo());
+            readyToJump = true;
+            if (isSlowmoActive)
+            {
+                StartCoroutine(DoSlowmo());
+            }
         }
     }
 
@@ -143,7 +148,7 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (readyToJump)
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
