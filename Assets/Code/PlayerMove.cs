@@ -170,7 +170,7 @@ public class PlayerMove : MonoBehaviour
 
     bool isGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, transform.localScale.y / 2 + 0.1f);
+        return Physics.Raycast(transform.position, -Vector3.up, transform.localScale.y / 2 + 0.2f);
     }
 
     private void OnCollisionEnter(Collision other)
