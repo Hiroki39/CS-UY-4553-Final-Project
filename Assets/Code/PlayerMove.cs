@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject[] checkPoints;
     public bool[] checkPointIsBlues;
     public float[] checkPointScales;
-    public GameObject bluePicked;
+    public GameObject blueGemPicked;
     public AudioSource objectSound;
     public TimeManager timeManager;
     public int totalSlowmoDefault = 3;
@@ -240,9 +240,9 @@ public class PlayerMove : MonoBehaviour
 
     public IEnumerator BlueGemFirstTime()
     {
-        bluePicked.SetActive(true);
+        blueGemPicked.SetActive(true);
         yield return new WaitForSeconds(3f);
-        bluePicked.SetActive(false);
+        blueGemPicked.SetActive(false);
     }
 
     IEnumerator AutoSave()
