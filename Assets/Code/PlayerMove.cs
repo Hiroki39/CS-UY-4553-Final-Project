@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     public TimeManager timeManager;
     public int totalSlowmoDefault = 3;
     [HideInInspector] public float jumpForce = 6f;
+
     Renderer rend;
     TrailRenderer trend;
     Rigidbody rb;
@@ -27,8 +28,6 @@ public class PlayerMove : MonoBehaviour
     bool grounded = false;
     bool infiniteJump = false;
     // bool isBallSlowmo = false;
-    float jumpTimer;
-    float jumpDelay = 0.25f;
     bool isBallSlowmoActive = false;
 
     // Start is called before the first frame update
@@ -129,8 +128,6 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            jumpTimer = Time.time + jumpDelay;
-
             if (isBallSlowmoActive)
             {
                 Invoke("DoSlowmo", 0.5f);
@@ -159,10 +156,9 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
-        if (jumpTimer > Time.time && (infiniteJump || grounded))
+        if (Input.GetButtonDown("Jump"))
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-            jumpTimer = 0;
         }
     }
 
