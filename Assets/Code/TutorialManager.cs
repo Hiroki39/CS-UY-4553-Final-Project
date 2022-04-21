@@ -58,7 +58,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (popUpIndex == 2 && !canChangePopUp && !changedPopUp)
         {
-            playerScript.jumpForce = 5;
+            playerScript.jumpForce = 6f;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 waitTime = 5f;

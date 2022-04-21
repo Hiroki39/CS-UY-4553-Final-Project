@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     public AudioSource objectSound;
     public TimeManager timeManager;
     public int totalSlowmoDefault = 3;
-    [HideInInspector] public float jumpForce = 5f;
+    [HideInInspector] public float jumpForce = 6f;
     [HideInInspector] public bool jumped = false;
 
     Renderer rend;
