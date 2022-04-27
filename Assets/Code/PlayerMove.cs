@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     public float[] checkPointScales;
     public GameObject blueGemPicked;
     public AudioSource objectSound;
-    public TimeManager timeManager;
+    public float slowdownFactor = 0.2f;
     public int totalSlowmoDefault = 3;
     [HideInInspector] public float jumpForce = 6f;
 
@@ -133,9 +133,11 @@ public class PlayerMove : MonoBehaviour
     IEnumerator DoSlowmo()
     {
         yield return new WaitForSeconds(0.5f);
-        timeManager.DoSlowmotion();
-        yield return new WaitForSeconds(0.6f * timeManager.slowdownFactor);
-        timeManager.StopSlowmotion();
+        Time.timeScale = slowdownFactor;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
+        yield return new WaitForSeconds(0.6f * slowdownFactor);
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
         isSlowmoActive = false;
     }
 
