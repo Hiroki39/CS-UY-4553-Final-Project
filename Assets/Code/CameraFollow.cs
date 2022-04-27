@@ -118,11 +118,11 @@ public class CameraFollow : MonoBehaviour
         while (currTime < shakeTime)
         {
             currTime += Time.deltaTime;
-            shakeOffset = Random.insideUnitSphere * shakeAmplitude;
+            shakeOffset = Random.insideUnitSphere * shakeAmplitude * player.transform.localScale.x;
             yield return null;
         }
         shakeOffset = new Vector3(0f, 0f, 0f);
         shaking = false;
-        yield return false;
+        yield return null;
     }
 }

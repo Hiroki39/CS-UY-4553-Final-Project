@@ -144,9 +144,11 @@ public class PlayerMove : MonoBehaviour
         float zSpeed = Input.GetAxis("Vertical") * force;
         float xSpeed = Input.GetAxis("Horizontal") * force;
         rb.AddForce(new Vector3(xSpeed, 0, zSpeed));
-        if (rb.velocity.magnitude > maxSpeed)
+        Vector3 projectedSpeed = Vector3.ProjectOnPlane(rb.velocity, new Vector3(0f, 1f, 0f));
+        if (projectedSpeed.magnitude > maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            projectedSpeed = projectedSpeed.normalized * maxSpeed;
+            rb.velocity = new Vector3(projectedSpeed.x, rb.velocity.y, projectedSpeed.z);
         }
         if (readyToJump)
         {
