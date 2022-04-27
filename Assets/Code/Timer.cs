@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour
     public TMP_Text slowmoText;
     public Image translucent;
     public Image slowmo;
+    private PlayerMove playerScript;
 
     // Start is called before the first frame update
     void Start()

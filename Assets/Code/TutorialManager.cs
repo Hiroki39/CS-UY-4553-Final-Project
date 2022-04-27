@@ -55,7 +55,7 @@ public class TutorialManager : MonoBehaviour
                     tempWalls[0].SetActive(false);
                 }
             }
-            else if (popUpIndex == 3) 
+            else if (popUpIndex == 3)
             {
                 //if (Input.GetKeyDown(KeyCode.E))
                 //{
@@ -139,9 +139,5 @@ public class TutorialManager : MonoBehaviour
         {
             pickedYellow = true;
         }
-        // if (other.gameObject.CompareTag("JumpPlane"))
-        // {
-        //     jumped = true;
-        // }
     }
 }

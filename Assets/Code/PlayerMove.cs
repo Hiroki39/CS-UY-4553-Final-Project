@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +13,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject blueGemPicked;
     public AudioSource objectSound;
     public float slowdownFactor = 0.2f;
-    public int totalSlowmoDefault = 3;
+    public int slowmoCount = 3;
+    public TMP_Text slowmoText;
     [HideInInspector] public float jumpForce = 6f;
 
     Renderer rend;
@@ -82,10 +83,11 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !isSlowmoActive)
         {
-            if (totalSlowmoDefault > 0)
+            if (slowmoCount > 0)
             {
                 isSlowmoActive = true;
-                totalSlowmoDefault -= 1;
+                slowmoCount -= 1;
+                slowmoText.text = "Slowmo Remaining: " + slowmoCount.ToString();
                 ps.Play();
             }
         }
