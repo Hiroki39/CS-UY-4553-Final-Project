@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     public float slowdownFactor = 0.2f;
     public int slowmoCount = 3;
     public TMP_Text slowmoText;
+    public int slowmoDieLimit;
     [HideInInspector] public float jumpForce = 6f;
 
     Renderer rend;
@@ -72,7 +73,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if ((transform.position.y < -5) && (transform.position.y > -6))
+        if ((transform.position.y < slowmoDieLimit) && (transform.position.y > slowmoDieLimit - 1))
         {
             StartCoroutine(DoSlowmoForDie());
         }
