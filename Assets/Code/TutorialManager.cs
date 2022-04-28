@@ -14,7 +14,7 @@ public class TutorialManager : MonoBehaviour
     bool pickedGreen = false;
     bool pickedRed = false;
     bool movedToLastPlatform = false;
-    // bool jumped = false;
+    bool jumped = false;
     int popUpIndex = 0;
     private void Start()
     {
@@ -36,14 +36,14 @@ public class TutorialManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    StartCoroutine(ChangePopUp(2f));
+                    StartCoroutine(ChangePopUp(2f, -1));
                 }
             }
             else if (popUpIndex == 1)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    StartCoroutine(ChangePopUp(2f));
+                    StartCoroutine(ChangePopUp(2f, -1));
                 }
             }
             else if (popUpIndex == 2)
@@ -51,68 +51,80 @@ public class TutorialManager : MonoBehaviour
                 playerScript.jumpForce = 5;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    StartCoroutine(ChangePopUp(5f));
-                    tempWalls[0].SetActive(false);
+                    StartCoroutine(ChangePopUp(2f, 0));
                 }
             }
-            else if (popUpIndex == 3)
+            else if (popUpIndex == 3 && jumped)
             {
-                //if (Input.GetKeyDown(KeyCode.E))
-                //{
-                Debug.Log("Popup 3 Test");
-                StartCoroutine(ChangePopUp(2f));
-                //}
+                StartCoroutine(ChangePopUp(1f, -1));
             }
             else if (popUpIndex == 4)
             {
-                StartCoroutine(ChangePopUp(3f));
-                tempWalls[1].SetActive(false);
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
+                || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+                {
+                    StartCoroutine(ChangePopUp(6f, -1));
+                }
             }
-            else if (popUpIndex == 5 && movedToLastPlatform)
+            else if (popUpIndex == 5)
             {
-                StartCoroutine(ChangePopUp(1f));
+                StartCoroutine(ChangePopUp(4f, -1));
             }
-            else if (popUpIndex == 6 && pickedYellow)
+            else if (popUpIndex == 6)
             {
-                StartCoroutine(ChangePopUp(3f));
+                StartCoroutine(ChangePopUp(3f, 1));
             }
-            else if (popUpIndex == 7 && pickedGreen)
+            else if (popUpIndex == 7 && movedToLastPlatform)
             {
-                StartCoroutine(ChangePopUp(3f));
+                StartCoroutine(ChangePopUp(1f, -1));
             }
-            else if (popUpIndex == 8 && pickedRed)
+            else if (popUpIndex == 8 && pickedYellow)
             {
-                StartCoroutine(ChangePopUp(3f));
+                StartCoroutine(ChangePopUp(3f, -1));
             }
-            else if (popUpIndex == 9)
+            else if (popUpIndex == 9 && pickedGreen)
             {
-                StartCoroutine(ChangePopUp(4f));
+                StartCoroutine(ChangePopUp(3f, -1));
             }
-            else if (popUpIndex == 10)
+            else if (popUpIndex == 10 && pickedRed)
             {
-                StartCoroutine(ChangePopUp(4f));
+                StartCoroutine(ChangePopUp(3f, -1));
             }
             else if (popUpIndex == 11)
             {
-                StartCoroutine(ChangePopUp(2f));
+                StartCoroutine(ChangePopUp(4f, -1));
             }
             else if (popUpIndex == 12)
             {
-                goal.SetActive(true);
-                tempWalls[2].SetActive(false);
+                StartCoroutine(ChangePopUp(4f, -1));
+            }
+            else if (popUpIndex == 13)
+            {
+                StartCoroutine(ChangePopUp(2f, -1));
+            }
+            else if (popUpIndex == 14)
+            {
+                StartCoroutine(ChangePopUp(5f, 2));
             }
         }
     }
 
-    public IEnumerator ChangePopUp(float waitTime)
+    public IEnumerator ChangePopUp(float waitTime, int wall)
     {
-        Debug.Log(popUpIndex);
         popUpChanging = true;
         yield return new WaitForSeconds(waitTime);
         popUps[popUpIndex++].SetActive(false);
         if (popUpIndex < popUps.Length)
         {
             popUps[popUpIndex].SetActive(true);
+        }
+        if (wall == 2)
+        {
+            goal.SetActive(true);
+        }
+        if (wall != -1)
+        {
+            tempWalls[wall].SetActive(false);
         }
         popUpChanging = false;
     }
@@ -138,6 +150,10 @@ public class TutorialManager : MonoBehaviour
         if (other.gameObject.CompareTag("Gem4"))
         {
             pickedYellow = true;
+        }
+        if (other.gameObject.CompareTag("JumpPlane"))
+        {
+            jumped = true;
         }
     }
 }
