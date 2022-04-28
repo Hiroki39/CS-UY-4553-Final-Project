@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9088059504169643748}
   - component: {fileID: 9088059504169643755}
   - component: {fileID: 9088059504169643745}
+  - component: {fileID: 1502617326182162747}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -32,7 +33,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4059309324152388920}
   m_Father: {fileID: 0}
@@ -57,7 +57,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -120,12 +119,12 @@ MonoBehaviour:
   checkPointIsBlues: 01
   checkPointScales:
   - 1
-  bluePicked: {fileID: 0}
+  blueGemPicked: {fileID: 0}
   objectSound: {fileID: 0}
-  timeManager: {fileID: 0}
+  slowdownFactor: 0.2
+  slowmoCount: 3
+  slowmoText: {fileID: 0}
   jumpForce: 6
-  jumped: 0
-  totalSlowmoDefault: 3
 --- !u!54 &9088059504169643755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,7 +153,6 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -250,6 +248,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1502617326182162747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088059504169643754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a2303f88558403d93fe538cb0e3527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordTime: 5
 --- !u!1001 &1078684748010860887
 PrefabInstance:
   m_ObjectHideFlags: 0

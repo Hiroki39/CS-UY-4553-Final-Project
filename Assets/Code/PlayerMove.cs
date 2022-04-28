@@ -72,7 +72,12 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -12)
+        if ((transform.position.y < -5) && (transform.position.y > -6))
+        {
+            StartCoroutine(DoSlowmoForDie());
+        }
+        Debug.Log(transform.position.y);
+        if (transform.position.y < -300)
         {
             isAlive = false;
         }
@@ -132,12 +137,22 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    IEnumerator DoSlowmoForDie()
+    {
+        Time.timeScale = 0.2f;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
+        yield return new WaitForSeconds(0.3f);
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
+        isSlowmoActive = false;
+    }
+
     IEnumerator DoSlowmo()
     {
         yield return new WaitForSeconds(0.5f);
         Time.timeScale = slowdownFactor;
         Time.fixedDeltaTime = Time.timeScale * .02f;
-        yield return new WaitForSeconds(0.6f * slowdownFactor);
+        yield return new WaitForSeconds(0.5f * slowdownFactor);
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = Time.timeScale * .02f;
         isSlowmoActive = false;

@@ -2708,7 +2708,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733187173}
-  m_Text: Red Gem = Checkpoint
+  m_Text: Flag = Checkpoint
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -3093,7 +3093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &784164623
 Transform:
   m_ObjectHideFlags: 0
@@ -3117,9 +3117,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784164622}
-  m_Text: 'Green Gem = Decrease Size
+  m_Text: 'Down arrow = Decrease Size
 
-    But don''t underestimate the minute changes'
+    But don''t underestimate the small changes'
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -3419,9 +3419,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880069659}
-  m_Text: 'Yellow Gem = Increase Size
+  m_Text: 'Up Arrow = Increase Size
 
-    Size Changes are minute'
+    Size changes are small'
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
