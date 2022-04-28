@@ -9,6 +9,6 @@ public class PublicVars : MonoBehaviour
     public static bool paused = false;
     public static int camPos = 0;
     public static float timer = 0;
-    public static int numLevel = 4;
+    public static int numLevel = 5;
     public static float[] personalBest = new float[numLevel];
 }
