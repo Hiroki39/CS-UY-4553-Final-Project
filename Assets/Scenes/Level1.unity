@@ -4427,6 +4427,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
+      propertyPath: dieLimit
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: slowmoText
       value: 
       objectReference: {fileID: 254631610}

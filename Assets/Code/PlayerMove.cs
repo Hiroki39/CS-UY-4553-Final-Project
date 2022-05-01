@@ -16,13 +16,14 @@ public class PlayerMove : MonoBehaviour
     public int slowmoCount = 3;
     public TMP_Text slowmoText;
     public int slowmoDieLimit;
+    public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
 
     Renderer rend;
     TrailRenderer trend;
     Rigidbody rb;
     CameraFollow cf;
-    ParticleSystem ps;
+    ParticleSystem[] ps;
     float force = 12f;
     float maxSpeed = 12f;
     bool isAlive = true;
@@ -38,7 +39,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         trend = GetComponent<TrailRenderer>();
-        ps = GetComponentInChildren<ParticleSystem>();
+        ps = GetComponentsInChildren<ParticleSystem>();
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
@@ -75,13 +76,14 @@ public class PlayerMove : MonoBehaviour
     {
         if ((transform.position.y < slowmoDieLimit) && (transform.position.y > slowmoDieLimit - 1))
         {
-            StartCoroutine(DoSlowmoForDie());
+            StartCoroutine(DoSlowmo(0.0f, 2.0f));
         }
-        Debug.Log(transform.position.y);
-        if (transform.position.y < -300)
+ 
+        if ((transform.position.y < dieLimit) && (transform.position.y > dieLimit - 1))
         {
-            isAlive = false;
+        	StartCoroutine(DieSequence());
         }
+
         if (!isAlive)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -94,7 +96,7 @@ public class PlayerMove : MonoBehaviour
                 isSlowmoActive = true;
                 slowmoCount -= 1;
                 slowmoText.text = "Slowmo Remaining: " + slowmoCount.ToString();
-                ps.Play();
+                ps[0].Play();
             }
         }
 
@@ -133,27 +135,26 @@ public class PlayerMove : MonoBehaviour
             readyToJump = true;
             if (isSlowmoActive)
             {
-                StartCoroutine(DoSlowmo());
+                StartCoroutine(DoSlowmo(0.5f, 0.5f));
             }
         }
     }
 
-    IEnumerator DoSlowmoForDie()
+    IEnumerator DieSequence()
     {
-        Time.timeScale = 0.2f;
-        Time.fixedDeltaTime = Time.timeScale * .02f;
-        yield return new WaitForSeconds(0.3f);
-        Time.timeScale = 1.0f;
-        Time.fixedDeltaTime = Time.timeScale * .02f;
-        isSlowmoActive = false;
+        rb.freezeRotation = true;
+        ps[9].Play();
+        rend.enabled = false;
+        yield return new WaitForSeconds(4.0f);
+        isAlive = false;
     }
 
-    IEnumerator DoSlowmo()
+    IEnumerator DoSlowmo(float delayStartSlowmo, float delayStopSlowmo)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delayStartSlowmo);
         Time.timeScale = slowdownFactor;
         Time.fixedDeltaTime = Time.timeScale * .02f;
-        yield return new WaitForSeconds(0.5f * slowdownFactor);
+        yield return new WaitForSeconds(delayStopSlowmo * slowdownFactor);
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = Time.timeScale * .02f;
         isSlowmoActive = false;
