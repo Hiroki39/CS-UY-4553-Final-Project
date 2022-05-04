@@ -95,7 +95,7 @@ public class PlayerMove : MonoBehaviour
             {
                 isSlowmoActive = true;
                 slowmoCount -= 1;
-                slowmoText.text = "Slowmo Remaining: " + slowmoCount.ToString();
+                slowmoText.text = slowmoCount.ToString();
                 ps[0].Play();
             }
         }

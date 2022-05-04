@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeBody : MonoBehaviour {
 
 	bool isRewinding = false;
 
 	public float recordTime = 5f;
+	public float maxTime = 180f;
+    public Slider RewindBar;
 
 	List<PointInTime> pointsInTime;
-
 	Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
 		pointsInTime = new List<PointInTime>();
 		rb = GetComponent<Rigidbody>();
+		RewindBar.value = maxTime;
 	}
 	
 	// Update is called once per frame
@@ -35,8 +38,14 @@ public class TimeBody : MonoBehaviour {
 	}
 
 	void Rewind ()
-	{
-		if (pointsInTime.Count > 0)
+	{  
+		RewindBar.value -= 1;
+
+		if (RewindBar.value < 0) {
+			RewindBar.value = 0;
+		}
+
+		if ((pointsInTime.Count > 0) && (RewindBar.value > 0))
 		{
 			PointInTime pointInTime = pointsInTime[0];
             transform.position = pointInTime.position;

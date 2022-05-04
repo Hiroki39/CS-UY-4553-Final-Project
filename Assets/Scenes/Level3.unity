@@ -5357,17 +5357,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera-Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7014928318381104520, guid: 32013395e453f4efaa89198fccee473c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014928318381104520, guid: 32013395e453f4efaa89198fccee473c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32013395e453f4efaa89198fccee473c, type: 3}
 --- !u!114 &614175800 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1127355409614868282, guid: 32013395e453f4efaa89198fccee473c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1088587453586601482, guid: 32013395e453f4efaa89198fccee473c, type: 3}
   m_PrefabInstance: {fileID: 614175799}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &614175801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2682862949037091821, guid: 32013395e453f4efaa89198fccee473c, type: 3}
+  m_PrefabInstance: {fileID: 614175799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &614660609 stripped
@@ -14660,6 +14679,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1502617326182162747, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
+      propertyPath: maxTime
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502617326182162747, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
+      propertyPath: RewindBar
+      value: 
+      objectReference: {fileID: 614175801}
     - target: {fileID: 9088059504169643744, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: m_RootOrder
       value: 7
