@@ -223,12 +223,18 @@ public class PlayerMove : MonoBehaviour
 
         if (other.gameObject.CompareTag("Gem3"))
         {
-            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            //transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            
+            var scaleTo = transform.localScale - new Vector3(0.1f, 0.1f, 0.1f);
+            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1.5f));
         }
 
         if (other.gameObject.CompareTag("Gem4"))
         {
-            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            //transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+
+            var scaleTo = transform.localScale + new Vector3(0.1f, 0.1f, 0.1f);
+            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1.5f));
         }
 
         if (other.gameObject.CompareTag("Gem5"))
@@ -242,6 +248,18 @@ public class PlayerMove : MonoBehaviour
         //     timeManager.DoSlowmotion();
         //     isBallSlowmo = true;
         // }
+    }
+
+    IEnumerator ScaleOverSeconds(GameObject objectToScale, Vector3 scaleTo, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startingScale = objectToScale.transform.localScale;
+        while (elapsedTime < seconds)
+        {
+            objectToScale.transform.localScale = Vector3.Lerp(startingScale, scaleTo, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     IEnumerator WaitToMove()
