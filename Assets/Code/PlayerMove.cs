@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     public int slowmoDieLimit;
     public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
+    public TMP_Text scoreText;
 
     Renderer rend;
     TrailRenderer trend;
@@ -32,6 +33,7 @@ public class PlayerMove : MonoBehaviour
     bool readyToJump = false;
     bool infiniteJump = false;
     bool isSlowmoActive = false;
+    int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -216,7 +218,7 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Gem2"))
         {
             ++PublicVars.checkPoint;
-            Debug.Log(PublicVars.checkPoint);
+            //Debug.Log(PublicVars.checkPoint);
         }
 
         if (other.gameObject.CompareTag("Gem3"))
@@ -227,6 +229,12 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Gem4"))
         {
             transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+        }
+
+        if (other.gameObject.CompareTag("Gem5"))
+        {
+            score += 100;
+            scoreText.text = "Score: " + score.ToString();
         }
 
         // if (other.gameObject.CompareTag("SlowmoPlane"))
