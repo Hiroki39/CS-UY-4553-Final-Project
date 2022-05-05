@@ -12888,6 +12888,10 @@ PrefabInstance:
       propertyPath: RewindBar
       value: 
       objectReference: {fileID: 21281868}
+    - target: {fileID: 1502617326182162747, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
+      propertyPath: rewindBar
+      value: 
+      objectReference: {fileID: 21281868}
     - target: {fileID: 9088059504169643744, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -12954,7 +12958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: slowmoDieLimit
-      value: -10
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: checkPoints.Array.size
