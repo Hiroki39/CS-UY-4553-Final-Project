@@ -15,13 +15,16 @@ public class PlayerMove : MonoBehaviour
     public float slowdownFactor = 0.2f;
     public int slowmoCount = 3;
     public TMP_Text slowmoText;
+    public int slowmoDieLimit;
+    public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
+    public TMP_Text scoreText;
 
     Renderer rend;
     TrailRenderer trend;
     Rigidbody rb;
     CameraFollow cf;
-    ParticleSystem ps;
+    ParticleSystem[] ps;
     float force = 12f;
     float maxSpeed = 12f;
     bool isAlive = true;
@@ -30,6 +33,7 @@ public class PlayerMove : MonoBehaviour
     bool readyToJump = false;
     bool infiniteJump = false;
     bool isSlowmoActive = false;
+    int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +41,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         trend = GetComponent<TrailRenderer>();
-        ps = GetComponentInChildren<ParticleSystem>();
+        ps = GetComponentsInChildren<ParticleSystem>();
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
@@ -72,15 +76,16 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if ((transform.position.y < -5) && (transform.position.y > -6))
+        if ((transform.position.y < slowmoDieLimit) && (transform.position.y > slowmoDieLimit - 1))
         {
-            StartCoroutine(DoSlowmoForDie());
+            StartCoroutine(DoSlowmo(0.0f, 2.0f));
         }
-        Debug.Log(transform.position.y);
-        if (transform.position.y < -300)
+ 
+        if ((transform.position.y < dieLimit) && (transform.position.y > dieLimit - 1))
         {
-            isAlive = false;
+        	StartCoroutine(DieSequence());
         }
+
         if (!isAlive)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -92,8 +97,8 @@ public class PlayerMove : MonoBehaviour
             {
                 isSlowmoActive = true;
                 slowmoCount -= 1;
-                slowmoText.text = "Slowmo Remaining: " + slowmoCount.ToString();
-                ps.Play();
+                slowmoText.text = slowmoCount.ToString();
+                ps[0].Play();
             }
         }
 
@@ -132,27 +137,26 @@ public class PlayerMove : MonoBehaviour
             readyToJump = true;
             if (isSlowmoActive)
             {
-                StartCoroutine(DoSlowmo());
+                StartCoroutine(DoSlowmo(0.5f, 0.5f));
             }
         }
     }
 
-    IEnumerator DoSlowmoForDie()
+    IEnumerator DieSequence()
     {
-        Time.timeScale = 0.2f;
-        Time.fixedDeltaTime = Time.timeScale * .02f;
-        yield return new WaitForSeconds(0.3f * slowdownFactor);
-        Time.timeScale = 1.0f;
-        Time.fixedDeltaTime = Time.timeScale * .02f;
-        isSlowmoActive = false;
+        rb.freezeRotation = true;
+        ps[9].Play();
+        rend.enabled = false;
+        yield return new WaitForSeconds(4.0f);
+        isAlive = false;
     }
 
-    IEnumerator DoSlowmo()
+    IEnumerator DoSlowmo(float delayStartSlowmo, float delayStopSlowmo)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delayStartSlowmo);
         Time.timeScale = slowdownFactor;
         Time.fixedDeltaTime = Time.timeScale * .02f;
-        yield return new WaitForSeconds(0.5f * slowdownFactor);
+        yield return new WaitForSeconds(delayStopSlowmo * slowdownFactor);
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = Time.timeScale * .02f;
         isSlowmoActive = false;
@@ -214,17 +218,29 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Gem2"))
         {
             ++PublicVars.checkPoint;
-            Debug.Log(PublicVars.checkPoint);
+            //Debug.Log(PublicVars.checkPoint);
         }
 
         if (other.gameObject.CompareTag("Gem3"))
         {
-            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            //transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            
+            var scaleTo = transform.localScale - new Vector3(0.1f, 0.1f, 0.1f);
+            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1.5f));
         }
 
         if (other.gameObject.CompareTag("Gem4"))
         {
-            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            //transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+
+            var scaleTo = transform.localScale + new Vector3(0.1f, 0.1f, 0.1f);
+            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1.5f));
+        }
+
+        if (other.gameObject.CompareTag("Gem5"))
+        {
+            score += 100;
+            scoreText.text = "Score: " + score.ToString();
         }
 
         // if (other.gameObject.CompareTag("SlowmoPlane"))
@@ -232,6 +248,18 @@ public class PlayerMove : MonoBehaviour
         //     timeManager.DoSlowmotion();
         //     isBallSlowmo = true;
         // }
+    }
+
+    IEnumerator ScaleOverSeconds(GameObject objectToScale, Vector3 scaleTo, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startingScale = objectToScale.transform.localScale;
+        while (elapsedTime < seconds)
+        {
+            objectToScale.transform.localScale = Vector3.Lerp(startingScale, scaleTo, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     IEnumerator WaitToMove()

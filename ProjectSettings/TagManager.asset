@@ -13,6 +13,7 @@ TagManager:
   - SlowmoPlane
   - JumpPlane
   - PlayerEx
+  - Gem5
   layers:
   - Default
   - TransparentFX

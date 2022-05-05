@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject slowmoHint;
     public GameObject pauseMenu;
     public GameObject quitBtn;
 
@@ -40,6 +41,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SlowmoHint()
+    {
+        slowmoHint.SetActive(true);
+        PublicVars.paused = true;
+        Time.timeScale = 0;
+    }
+
     public void Pause()
     {
         pauseMenu.SetActive(true);
@@ -49,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        slowmoHint.SetActive(false);
         pauseMenu.SetActive(false);
         PublicVars.paused = false;
         Time.timeScale = 1;

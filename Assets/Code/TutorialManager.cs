@@ -10,9 +10,10 @@ public class TutorialManager : MonoBehaviour
     public GameObject goal;
 
     bool popUpChanging = false;
-    bool pickedYellow = false;
-    bool pickedGreen = false;
-    bool pickedRed = false;
+    bool pickedScore = false;
+    bool pickedBig = false;
+    bool pickedSmall = false;
+    bool pickedCheckpoint = false;
     bool movedToLastPlatform = false;
     bool jumped = false;
     int popUpIndex = 0;
@@ -78,21 +79,21 @@ public class TutorialManager : MonoBehaviour
             {
                 StartCoroutine(ChangePopUp(1f, -1));
             }
-            else if (popUpIndex == 8 && pickedYellow)
+            else if (popUpIndex == 8 && pickedBig)
             {
                 StartCoroutine(ChangePopUp(3f, -1));
             }
-            else if (popUpIndex == 9 && pickedGreen)
+            else if (popUpIndex == 9 && pickedSmall)
             {
                 StartCoroutine(ChangePopUp(3f, -1));
             }
-            else if (popUpIndex == 10 && pickedRed)
+            else if (popUpIndex == 10 && pickedCheckpoint)
             {
                 StartCoroutine(ChangePopUp(3f, -1));
             }
-            else if (popUpIndex == 11)
+            else if (popUpIndex == 11 && pickedScore)
             {
-                StartCoroutine(ChangePopUp(4f, -1));
+                StartCoroutine(ChangePopUp(3f, -1));
             }
             else if (popUpIndex == 12)
             {
@@ -100,9 +101,13 @@ public class TutorialManager : MonoBehaviour
             }
             else if (popUpIndex == 13)
             {
-                StartCoroutine(ChangePopUp(2f, -1));
+                StartCoroutine(ChangePopUp(4f, -1));
             }
             else if (popUpIndex == 14)
+            {
+                StartCoroutine(ChangePopUp(2f, -1));
+            }
+            else if (popUpIndex == 15)
             {
                 StartCoroutine(ChangePopUp(5f, 2));
             }
@@ -141,15 +146,19 @@ public class TutorialManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gem2"))
         {
-            pickedRed = true;
+            pickedCheckpoint = true;
         }
         if (other.gameObject.CompareTag("Gem3"))
         {
-            pickedGreen = true;
+            pickedSmall = true;
         }
         if (other.gameObject.CompareTag("Gem4"))
         {
-            pickedYellow = true;
+            pickedBig = true;
+        }
+        if (other.gameObject.CompareTag("Gem5"))
+        {
+            pickedScore = true;
         }
         if (other.gameObject.CompareTag("JumpPlane"))
         {
