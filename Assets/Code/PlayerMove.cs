@@ -16,7 +16,6 @@ public class PlayerMove : MonoBehaviour
     public int slowmoCount = 3;
     public TMP_Text slowmoText;
     public int slowmoDieLimit;
-    public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
     public TMP_Text scoreText;
 
@@ -25,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rb;
     CameraFollow cf;
     ParticleSystem[] ps;
+    int dieLimit;
     float force = 12f;
     float maxSpeed = 12f;
     bool isAlive = true;
@@ -45,6 +45,7 @@ public class PlayerMove : MonoBehaviour
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
+        dieLimit = slowmoDieLimit - 10;
 
         isBlue = checkPointIsBlues[PublicVars.checkPoint];
         if (isBlue)
@@ -80,10 +81,10 @@ public class PlayerMove : MonoBehaviour
         {
             StartCoroutine(DoSlowmo(0.0f, 2.0f));
         }
- 
+
         if ((transform.position.y < dieLimit) && (transform.position.y > dieLimit - 1))
         {
-        	StartCoroutine(DieSequence());
+            StartCoroutine(DieSequence());
         }
 
         if (!isAlive)
@@ -224,7 +225,7 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Gem3"))
         {
             //transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-            
+
             var scaleTo = transform.localScale - new Vector3(0.1f, 0.1f, 0.1f);
             StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1.5f));
         }

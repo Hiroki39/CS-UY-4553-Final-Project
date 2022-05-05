@@ -14732,6 +14732,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
+      propertyPath: dieLimit
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: bluePicked
       value: 
       objectReference: {fileID: 244426297}
@@ -14746,6 +14750,10 @@ PrefabInstance:
     - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: timeManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
+      propertyPath: slowmoDieLimit
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 9088059504169643748, guid: e01c14cf6df28413b8bfb92a00d98fb0, type: 3}
       propertyPath: checkPoints.Array.size
