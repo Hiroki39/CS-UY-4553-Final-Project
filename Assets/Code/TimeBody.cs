@@ -50,8 +50,8 @@ public class TimeBody : MonoBehaviour
             PointInTime pointInTime = pointsInTime[0];
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
+            rewindBar.value -= pointInTime.timeScale;
             pointsInTime.RemoveAt(0);
-            rewindBar.value -= 1;
         }
         else
         {
@@ -66,7 +66,7 @@ public class TimeBody : MonoBehaviour
             pointsInTime.RemoveAt(pointsInTime.Count - 1);
         }
 
-        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
+        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation, Time.timeScale));
     }
 
     public void StartRewind()

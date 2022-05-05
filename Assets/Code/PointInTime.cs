@@ -6,12 +6,13 @@ public class PointInTime
     public Vector3 position;
     public Quaternion rotation;
 
-    // public float float
+    public float timeScale;
 
-    public PointInTime(Vector3 _position, Quaternion _rotation)
+    public PointInTime(Vector3 _position, Quaternion _rotation, float _timeScale)
     {
         position = _position;
         rotation = _rotation;
+        timeScale = _timeScale;
     }
 
 }
