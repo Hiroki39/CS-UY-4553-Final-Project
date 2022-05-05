@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     public TMP_Text slowmoText;
     public int slowmoDieLimit;
     [HideInInspector] public float jumpForce = 6f;
+    [HideInInspector] public bool isDying = false;
     public TMP_Text scoreText;
 
     Renderer rend;
@@ -145,6 +146,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator DieSequence()
     {
+        isDying = true;
         rb.freezeRotation = true;
         ps[9].Play();
         rend.enabled = false;
@@ -243,12 +245,6 @@ public class PlayerMove : MonoBehaviour
             score += 100;
             scoreText.text = "Score: " + score.ToString();
         }
-
-        // if (other.gameObject.CompareTag("SlowmoPlane"))
-        // {
-        //     timeManager.DoSlowmotion();
-        //     isBallSlowmo = true;
-        // }
     }
 
     IEnumerator ScaleOverSeconds(GameObject objectToScale, Vector3 scaleTo, float seconds)
