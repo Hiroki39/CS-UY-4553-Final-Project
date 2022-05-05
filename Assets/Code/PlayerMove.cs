@@ -141,7 +141,7 @@ public class PlayerMove : MonoBehaviour
     {
         Time.timeScale = 0.2f;
         Time.fixedDeltaTime = Time.timeScale * .02f;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.3f * slowdownFactor);
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = Time.timeScale * .02f;
         isSlowmoActive = false;

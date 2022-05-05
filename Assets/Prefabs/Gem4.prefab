@@ -363,6 +363,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6237553109302029156, guid: 028315ff90f3b77478f6282592e23c74, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6237553109302029157, guid: 028315ff90f3b77478f6282592e23c74, type: 3}
       propertyPath: m_Name
       value: BirthdaySpark
