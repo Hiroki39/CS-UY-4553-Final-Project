@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf00c4c997bf4b7397409c8590fd297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowmoHint: {fileID: 0}
   pauseMenu: {fileID: 1517884302279420072}
   quitBtn: {fileID: 1517884303869520080}
 --- !u!1 &1517884302279420072
