@@ -11,9 +11,7 @@ public class Timer : MonoBehaviour
     bool timerActive = false;
     public TMP_Text timerText;
     public TMP_Text personalBestText;
-    public TMP_Text slowmoText;
     public Image translucent;
-    public Image slowmo;
     private PlayerMove playerScript;
 
     // Start is called before the first frame update
@@ -27,7 +25,6 @@ public class Timer : MonoBehaviour
             personalBestText.text = "Personal Best: " + time.ToString(@"mm\:ss\:fff");
         }
         translucent.rectTransform.sizeDelta = new Vector2(personalBestText.preferredWidth + 20, translucent.rectTransform.sizeDelta.y);
-        slowmo.rectTransform.sizeDelta = new Vector2(slowmoText.preferredWidth + 20, slowmo.rectTransform.sizeDelta.y);
     }
 
     // Update is called once per frame

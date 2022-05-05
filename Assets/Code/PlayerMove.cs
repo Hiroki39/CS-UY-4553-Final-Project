@@ -144,7 +144,8 @@ public class PlayerMove : MonoBehaviour
     IEnumerator DieSequence()
     {
         beforeDieSlowmoStarted = true;
-        StartCoroutine(DoSlowmo(0.0f, 3.0f));
+
+        // player have three seconds to rewind
         yield return new WaitForSeconds(3.0f);
 
         // if the ball after slowmo is still under the limit
