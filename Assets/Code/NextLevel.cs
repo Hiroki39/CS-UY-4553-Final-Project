@@ -18,16 +18,17 @@ public class NextLevel : MonoBehaviour
             {
                 PublicVars.personalBest[currLevel - 1] = PublicVars.timer;
             }
-            PublicVars.checkPoint = 0;
-            PublicVars.timer = 0;
 
             if (currLevel < PublicVars.numLevel)
             {
+                PublicVars.LevelBegin();
                 PublicVars.levelUnlocked = Mathf.Max(PublicVars.levelUnlocked, currLevel + 1);
+                SaveLoad.Save();
                 SceneManager.LoadScene("Level" + (currLevel + 1).ToString());
             }
             else
             {
+                SaveLoad.Save();
                 SceneManager.LoadScene("End");
             }
         }

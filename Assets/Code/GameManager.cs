@@ -66,17 +66,12 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         string level = SceneManager.GetActiveScene().name;
-        PublicVars.timer = 0;
-        if (level.Substring(0, 5) == "Level")
-        {
-            PublicVars.checkPoint = 0;
-        }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameStart(level);
     }
 
     public void GameStart(string level)
     {
-        PublicVars.checkPoint = 0;
+        PublicVars.LevelBegin();
         SceneManager.LoadScene(level);
     }
 

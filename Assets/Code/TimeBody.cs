@@ -9,7 +9,6 @@ public class TimeBody : MonoBehaviour
     bool isRewinding = false;
 
     public float recordTime = 5f;
-    public float maxTime = 180f;
     public Slider rewindBar;
 
     List<PointInTime> pointsInTime;
@@ -20,7 +19,7 @@ public class TimeBody : MonoBehaviour
     {
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
-        rewindBar.value = maxTime;
+        rewindBar.value = PublicVars.rewind;
     }
 
     // Update is called once per frame
@@ -50,7 +49,8 @@ public class TimeBody : MonoBehaviour
             PointInTime pointInTime = pointsInTime[0];
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
-            rewindBar.value -= pointInTime.timeScale;
+            PublicVars.rewind -= pointInTime.timeScale;
+            rewindBar.value = PublicVars.rewind;
             pointsInTime.RemoveAt(0);
         }
         else

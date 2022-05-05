@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial
+  m_text: Tut.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474856c04f9444f3382960119c2c3f61, type: 2}
   m_sharedMaterial: {fileID: 7646151621209629134, guid: 474856c04f9444f3382960119c2c3f61, type: 2}
@@ -991,7 +991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &742013026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1689,7 +1689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1194817878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2573,8 +2573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -434, y: 0}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchoredPosition: {x: -400, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642359919
 MonoBehaviour:
@@ -3734,6 +3734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf00c4c997bf4b7397409c8590fd297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowmoHint: {fileID: 0}
   pauseMenu: {fileID: 1517884302050795858}
   quitBtn: {fileID: 1325026850}
 --- !u!82 &1517884302032879115

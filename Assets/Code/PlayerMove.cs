@@ -23,7 +23,6 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rb;
     CameraFollow cf;
     ParticleSystem[] ps;
-    int slowmoCount = 3;
     float force = 12f;
     float maxSpeed = 12f;
     float slowdownFactor = 0.2f;
@@ -46,6 +45,7 @@ public class PlayerMove : MonoBehaviour
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
+        slowmoText.text = PublicVars.slowmoCount.ToString();
 
         isBlue = checkPointIsBlues[PublicVars.checkPoint];
         if (isBlue)
@@ -92,11 +92,11 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !isSlowmoActive)
         {
-            if (slowmoCount > 0)
+            if (PublicVars.slowmoCount > 0)
             {
                 isSlowmoActive = true;
-                slowmoCount -= 1;
-                slowmoText.text = slowmoCount.ToString();
+                PublicVars.slowmoCount -= 1;
+                slowmoText.text = PublicVars.slowmoCount.ToString();
                 ps[0].Play();
             }
         }
