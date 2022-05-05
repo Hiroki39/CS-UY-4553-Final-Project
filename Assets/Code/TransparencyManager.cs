@@ -14,6 +14,10 @@ public class TransparencyManager : MonoBehaviour
         GameObject[] grounds2 = GameObject.FindGameObjectsWithTag("Ground2");
         foreach (GameObject ground in grounds1)
         {
+            if (ground.GetComponent<Renderer>() == null)
+            {
+                Debug.Log(ground.name);
+            }
             Color tmpColor = ground.GetComponent<Renderer>().material.color;
             tmpColor.a = alpha;
             ground.GetComponent<Renderer>().material.color = tmpColor;
