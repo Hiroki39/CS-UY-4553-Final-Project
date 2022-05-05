@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject blueGemPicked;
     public AudioSource objectSound;
     public TMP_Text slowmoText;
-    public int slowmoDieLimit;
+    public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
     [HideInInspector] public bool isDying = false;
     public TMP_Text scoreText;
@@ -23,9 +23,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rb;
     CameraFollow cf;
     ParticleSystem[] ps;
-    int dieLimit;
     int slowmoCount = 3;
-    int slowmoDieGap = 5;
     float force = 12f;
     float maxSpeed = 12f;
     float slowdownFactor = 0.2f;
@@ -35,6 +33,7 @@ public class PlayerMove : MonoBehaviour
     bool readyToJump = false;
     bool infiniteJump = false;
     bool isSlowmoActive = false;
+    bool beforeDieSlowmoStarted = false;
     // int score = 0;
 
     // Start is called before the first frame update
@@ -47,7 +46,6 @@ public class PlayerMove : MonoBehaviour
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
-        dieLimit = slowmoDieLimit - slowmoDieGap;
 
         isBlue = checkPointIsBlues[PublicVars.checkPoint];
         if (isBlue)
@@ -79,19 +77,17 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if ((transform.position.y < slowmoDieLimit) && (transform.position.y > slowmoDieLimit - 1))
-        {
-            StartCoroutine(DoSlowmo(0.0f, 3.0f));
-        }
-
-        if ((transform.position.y < dieLimit) && (transform.position.y > dieLimit - 1))
-        {
-            StartCoroutine(DieSequence());
-        }
-
         if (!isAlive)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (transform.position.y < dieLimit)
+        {
+            if (!beforeDieSlowmoStarted)
+            {
+                StartCoroutine(DieSequence());
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E) && !isSlowmoActive)
@@ -147,12 +143,27 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator DieSequence()
     {
-        isDying = true;
-        rb.freezeRotation = true;
-        ps[9].Play();
-        rend.enabled = false;
-        yield return new WaitForSeconds(4.0f);
-        isAlive = false;
+        beforeDieSlowmoStarted = true;
+        StartCoroutine(DoSlowmo(0.0f, 3.0f));
+        yield return new WaitForSeconds(3.0f);
+
+        // if the ball after slowmo is still under the limit
+        if (transform.position.y < dieLimit)
+        {
+            GetComponent<TimeBody>().StopRewind();
+            isDying = true;
+            rb.freezeRotation = true;
+
+            ps[9].Play();
+            rend.enabled = false;
+            trend.enabled = false;
+            yield return new WaitForSeconds(4.0f);
+            isAlive = false;
+        }
+        else
+        {
+            beforeDieSlowmoStarted = false;
+        }
     }
 
     IEnumerator DoSlowmo(float delayStartSlowmo, float delayStopSlowmo)
