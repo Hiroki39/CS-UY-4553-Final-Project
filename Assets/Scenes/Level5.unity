@@ -192,6 +192,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 614175803, guid: 32013395e453f4efaa89198fccee473c, type: 3}
+      propertyPath: opacitySlider
+      value: 
+      objectReference: {fileID: 636863620}
     - target: {fileID: 3372571807138827904, guid: 32013395e453f4efaa89198fccee473c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4957,6 +4961,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6399638450159108942, guid: 7cd143e7633d543d1a5abf32a5f273ce, type: 3}
   m_PrefabInstance: {fileID: 1430439652}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &636863620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6975370450241214553, guid: 32013395e453f4efaa89198fccee473c, type: 3}
+  m_PrefabInstance: {fileID: 21281867}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &638680158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 979051893630843716, guid: 4a5d23a11513b46d0b7dfaca1bd97087, type: 3}

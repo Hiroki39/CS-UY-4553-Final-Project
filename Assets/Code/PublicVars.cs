@@ -11,4 +11,5 @@ public class PublicVars : MonoBehaviour
     public static float timer = 0;
     public static int numLevel = 5;
     public static float[] personalBest = new float[numLevel];
+    public static float opacity = 0.35f;
 }

@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TransparencyManager : MonoBehaviour
 {
+    public Slider opacitySlider;
+
     public void Start()
     {
-        AdjustTransparency(0.35f);
+        opacitySlider.value = PublicVars.opacity;
     }
     public void AdjustTransparency(float alpha)
     {
+        PublicVars.opacity = alpha;
         GameObject[] grounds1 = GameObject.FindGameObjectsWithTag("Ground1");
         GameObject[] grounds2 = GameObject.FindGameObjectsWithTag("Ground2");
         foreach (GameObject ground in grounds1)
