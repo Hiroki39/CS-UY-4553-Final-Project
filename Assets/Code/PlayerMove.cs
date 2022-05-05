@@ -12,8 +12,6 @@ public class PlayerMove : MonoBehaviour
     public float[] checkPointScales;
     public GameObject blueGemPicked;
     public AudioSource objectSound;
-    public float slowdownFactor = 0.2f;
-    public int slowmoCount = 3;
     public TMP_Text slowmoText;
     public int slowmoDieLimit;
     [HideInInspector] public float jumpForce = 6f;
@@ -26,15 +24,18 @@ public class PlayerMove : MonoBehaviour
     CameraFollow cf;
     ParticleSystem[] ps;
     int dieLimit;
+    int slowmoCount = 3;
+    int slowmoDieGap = 5;
     float force = 12f;
     float maxSpeed = 12f;
+    float slowdownFactor = 0.2f;
     bool isAlive = true;
     bool isBlue;
     bool grounded = false;
     bool readyToJump = false;
     bool infiniteJump = false;
     bool isSlowmoActive = false;
-    int score = 0;
+    // int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class PlayerMove : MonoBehaviour
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
         Physics.defaultContactOffset = 0.00000001f;
-        dieLimit = slowmoDieLimit - 10;
+        dieLimit = slowmoDieLimit - slowmoDieGap;
 
         isBlue = checkPointIsBlues[PublicVars.checkPoint];
         if (isBlue)
@@ -80,7 +81,7 @@ public class PlayerMove : MonoBehaviour
     {
         if ((transform.position.y < slowmoDieLimit) && (transform.position.y > slowmoDieLimit - 1))
         {
-            StartCoroutine(DoSlowmo(0.0f, 2.0f));
+            StartCoroutine(DoSlowmo(0.0f, 3.0f));
         }
 
         if ((transform.position.y < dieLimit) && (transform.position.y > dieLimit - 1))
@@ -229,7 +230,7 @@ public class PlayerMove : MonoBehaviour
             //transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
 
             var scaleTo = transform.localScale - new Vector3(0.1f, 0.1f, 0.1f);
-            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1.5f));
+            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1f));
         }
 
         if (other.gameObject.CompareTag("Gem4"))
@@ -237,14 +238,14 @@ public class PlayerMove : MonoBehaviour
             //transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
 
             var scaleTo = transform.localScale + new Vector3(0.1f, 0.1f, 0.1f);
-            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1.5f));
+            StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1f));
         }
 
-        if (other.gameObject.CompareTag("Gem5"))
-        {
-            score += 100;
-            scoreText.text = "Score: " + score.ToString();
-        }
+        // if (other.gameObject.CompareTag("Gem5"))
+        // {
+        //     score += 100;
+        //     scoreText.text = "Score: " + score.ToString();
+        // }
     }
 
     IEnumerator ScaleOverSeconds(GameObject objectToScale, Vector3 scaleTo, float seconds)
@@ -255,8 +256,9 @@ public class PlayerMove : MonoBehaviour
         {
             objectToScale.transform.localScale = Vector3.Lerp(startingScale, scaleTo, (elapsedTime / seconds));
             elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
         }
+        objectToScale.transform.localScale = scaleTo;
+        yield return null;
     }
 
     IEnumerator WaitToMove()
