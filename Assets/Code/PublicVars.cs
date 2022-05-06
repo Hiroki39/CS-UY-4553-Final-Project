@@ -9,7 +9,7 @@ public class PublicVars : MonoBehaviour
     static float defaultTimer = 0f;
     static float defaultRewind = 180f;
     public static int checkPoint = 0;
-    public static int levelUnlocked = 0;
+    public static int levelUnlocked = 1;
     public static bool paused = false;
     public static int camPos = 0;
     public static int slowmoCount = 3;
