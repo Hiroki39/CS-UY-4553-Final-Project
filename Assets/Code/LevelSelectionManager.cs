@@ -9,7 +9,6 @@ public class LevelSelectionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PublicVars.levelUnlocked);
         GameObject[] levelBtns = GameObject.FindGameObjectsWithTag("LevelBtn");
         for (int i = 0; i < PublicVars.levelUnlocked; ++i)
         {
