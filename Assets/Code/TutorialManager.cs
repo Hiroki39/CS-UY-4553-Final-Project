@@ -10,7 +10,6 @@ public class TutorialManager : MonoBehaviour
     public GameObject goal;
 
     bool popUpChanging = false;
-    bool pickedScore = false;
     bool pickedBig = false;
     bool pickedSmall = false;
     bool pickedCheckpoint = false;
@@ -91,9 +90,9 @@ public class TutorialManager : MonoBehaviour
             {
                 StartCoroutine(ChangePopUp(3f, -1));
             }
-            else if (popUpIndex == 11 && pickedScore)
+            else if (popUpIndex == 11)
             {
-                StartCoroutine(ChangePopUp(3f, -1));
+                StartCoroutine(ChangePopUp(4f, -1));
             }
             else if (popUpIndex == 12)
             {
@@ -101,13 +100,9 @@ public class TutorialManager : MonoBehaviour
             }
             else if (popUpIndex == 13)
             {
-                StartCoroutine(ChangePopUp(4f, -1));
-            }
-            else if (popUpIndex == 14)
-            {
                 StartCoroutine(ChangePopUp(2f, -1));
             }
-            else if (popUpIndex == 15)
+            else if (popUpIndex == 14)
             {
                 StartCoroutine(ChangePopUp(5f, 2));
             }
@@ -155,10 +150,6 @@ public class TutorialManager : MonoBehaviour
         if (other.gameObject.CompareTag("Gem4"))
         {
             pickedBig = true;
-        }
-        if (other.gameObject.CompareTag("Gem5"))
-        {
-            pickedScore = true;
         }
         if (other.gameObject.CompareTag("JumpPlane"))
         {

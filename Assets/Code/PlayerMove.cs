@@ -16,7 +16,6 @@ public class PlayerMove : MonoBehaviour
     public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
     [HideInInspector] public bool isDying = false;
-    public TMP_Text scoreText;
 
     Renderer rend;
     TrailRenderer trend;
@@ -33,7 +32,6 @@ public class PlayerMove : MonoBehaviour
     bool infiniteJump = false;
     bool isSlowmoActive = false;
     bool beforeDieSlowmoStarted = false;
-    // int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -252,12 +250,6 @@ public class PlayerMove : MonoBehaviour
             var scaleTo = transform.localScale + new Vector3(0.1f, 0.1f, 0.1f);
             StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1f));
         }
-
-        // if (other.gameObject.CompareTag("Gem5"))
-        // {
-        //     score += 100;
-        //     scoreText.text = "Score: " + score.ToString();
-        // }
     }
 
     IEnumerator ScaleOverSeconds(GameObject objectToScale, Vector3 scaleTo, float seconds)
