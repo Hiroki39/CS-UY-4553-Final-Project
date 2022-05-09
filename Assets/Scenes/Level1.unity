@@ -308,11 +308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Size.y
-      value: 40
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Size.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
@@ -443,11 +443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Size.y
-      value: 40
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3652479190836355571, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Size.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6045699446926743377, guid: 5ebb6ba767cd74e6899aa89968bfd2e7, type: 3}
       propertyPath: m_Name
@@ -1013,23 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d10054181a8643488c7fd43c64aff72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUps:
-  - {fileID: 1163660875}
-  - {fileID: 114299706}
-  - {fileID: 1608376164}
-  - {fileID: 1963478655}
-  - {fileID: 1430076959}
-  - {fileID: 1226139486}
-  - {fileID: 1963216989}
-  - {fileID: 654539044}
-  - {fileID: 880069659}
-  - {fileID: 784164622}
-  - {fileID: 733187173}
-  - {fileID: 0}
-  - {fileID: 927526627}
-  - {fileID: 536734459}
-  - {fileID: 981075601}
-  - {fileID: 1239558160}
+  popUpsParent: {fileID: 1916551390}
   tempWalls:
   - {fileID: 1750581867}
   - {fileID: 78222739}

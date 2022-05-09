@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    public GameObject[] popUps;
+    public GameObject popUpsParent;
     private PlayerMove playerScript;
     public GameObject[] tempWalls;
     public GameObject goal;
 
+    GameObject[] popUps;
     bool popUpChanging = false;
     bool pickedBig = false;
     bool pickedSmall = false;
@@ -19,6 +20,12 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        popUps = new GameObject[popUpsParent.transform.childCount];
+        for (int i = 0; i < popUpsParent.transform.childCount; i++)
+        {
+            popUps[i] = popUpsParent.transform.GetChild(i).gameObject;
+        }
+
         goal.SetActive(false);
         popUps[0].SetActive(true);
         for (int i = 1; i < popUps.Length; ++i)
@@ -26,7 +33,7 @@ public class TutorialManager : MonoBehaviour
             popUps[i].SetActive(false);
         }
         playerScript = GetComponent<PlayerMove>();
-        playerScript.jumpForce = 0;
+        playerScript.jumpForce = 0f;
     }
 
     private void Update()
@@ -144,15 +151,15 @@ public class TutorialManager : MonoBehaviour
         {
             pickedCheckpoint = true;
         }
-        if (other.gameObject.CompareTag("Gem3"))
+        else if (other.gameObject.CompareTag("Gem3"))
         {
             pickedSmall = true;
         }
-        if (other.gameObject.CompareTag("Gem4"))
+        else if (other.gameObject.CompareTag("Gem4"))
         {
             pickedBig = true;
         }
-        if (other.gameObject.CompareTag("JumpPlane"))
+        else if (other.gameObject.CompareTag("JumpPlane"))
         {
             jumped = true;
         }
