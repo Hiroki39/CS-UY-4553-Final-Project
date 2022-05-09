@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class PublicVars : MonoBehaviour
 {
-    static int defaultCheckPoint = 0;
-    static int defaultSlowmoCount = 3;
-    static float defaultTimer = 0f;
-    static float defaultRewind = 180f;
-    public static int checkPoint = 0;
+    // static int defaultCheckPoint = 0;
+    public static bool checkPointIsBlue = true;
+    public static float checkPointScale = 1f;
+    public static Vector3 checkPointPosition = new Vector3(0f, 1f, 0f);
     public static int levelUnlocked = 1;
-    public static bool paused = false;
     public static int camPos = 0;
     public static int slowmoCount = 3;
     public static float rewind = 180f;
-    public static float timer = 0;
+    public static float timer = 0f;
     public static int numLevel = 5;
     public static float[] personalBest = new float[numLevel];
     public static float opacity = 0.35f;
 
     public static void LevelBegin()
     {
-        checkPoint = defaultCheckPoint;
-        slowmoCount = defaultSlowmoCount;
-        timer = defaultTimer;
-        rewind = defaultRewind;
+        slowmoCount = 3;
+        timer = 0f;
+        rewind = 180f;
+
+        checkPointIsBlue = true;
+        checkPointScale = 1f;
+        checkPointPosition = new Vector3(0f, 1f, 0f);
     }
 }

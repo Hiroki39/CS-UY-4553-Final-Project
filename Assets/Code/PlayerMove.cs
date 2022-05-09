@@ -7,9 +7,6 @@ public class PlayerMove : MonoBehaviour
 {
     public Material Mat1;
     public Material Mat2;
-    public GameObject[] checkPoints;
-    public bool[] checkPointIsBlues;
-    public float[] checkPointScales;
     public GameObject blueGemPicked;
     public AudioSource objectSound;
     public TMP_Text slowmoText;
@@ -26,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     float maxSpeed = 12f;
     float slowdownFactor = 0.2f;
     bool isAlive = true;
-    bool isBlue;
+    bool isBlue = true;
     bool grounded = false;
     bool readyToJump = false;
     bool infiniteJump = false;
@@ -45,7 +42,22 @@ public class PlayerMove : MonoBehaviour
         Physics.defaultContactOffset = 0.00000001f;
         slowmoText.text = PublicVars.slowmoCount.ToString();
 
-        isBlue = checkPointIsBlues[PublicVars.checkPoint];
+        isBlue = PublicVars.checkPointIsBlue;
+
+        transform.localScale = new Vector3(PublicVars.checkPointScale, PublicVars.checkPointScale, PublicVars.checkPointScale);
+        transform.position = PublicVars.checkPointPosition + new Vector3(0, 1.5f, 0);
+
+        GameObject[] checkPoints = GameObject.FindGameObjectsWithTag("Gem2");
+
+        foreach (GameObject checkpoint in checkPoints)
+        {
+            if (checkpoint.transform.position == PublicVars.checkPointPosition)
+            {
+                Destroy(checkpoint);
+            }
+        }
+
+
         if (isBlue)
         {
             rend.material = Mat1;
@@ -61,15 +73,7 @@ public class PlayerMove : MonoBehaviour
         trend.enabled = false;
         trend.time = 0.5f;
 
-        transform.localScale = new Vector3(checkPointScales[PublicVars.checkPoint], checkPointScales[PublicVars.checkPoint], checkPointScales[PublicVars.checkPoint]);
-
-        transform.position = checkPoints[PublicVars.checkPoint].transform.position + new Vector3(0, 1.5f, 0);
         StartCoroutine(WaitToMove());
-        for (int i = 0; i <= PublicVars.checkPoint; ++i)
-        {
-            Destroy(checkPoints[i]);
-        }
-
         StartCoroutine(AutoSave());
     }
 
@@ -241,8 +245,10 @@ public class PlayerMove : MonoBehaviour
 
         if (other.gameObject.CompareTag("Gem2"))
         {
-            ++PublicVars.checkPoint;
-            //Debug.Log(PublicVars.checkPoint);
+            CheckPointAttribute checkPointAttr = other.gameObject.GetComponent<CheckPointAttribute>();
+            PublicVars.checkPointIsBlue = checkPointAttr.isBlue;
+            PublicVars.checkPointScale = checkPointAttr.scale;
+            PublicVars.checkPointPosition = other.gameObject.transform.position;
         }
 
         if (other.gameObject.CompareTag("Gem3"))

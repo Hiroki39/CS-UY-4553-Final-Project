@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject slowmoHint;
     public GameObject pauseMenu;
     public GameObject quitBtn;
-
+    bool paused = false;
     public void Start()
     {
         string level = SceneManager.GetActiveScene().name;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (PublicVars.paused)
+                if (paused)
                 {
                     Resume();
                 }
@@ -44,14 +44,14 @@ public class GameManager : MonoBehaviour
     public void SlowmoHint()
     {
         slowmoHint.SetActive(true);
-        PublicVars.paused = true;
+        paused = true;
         Time.timeScale = 0;
     }
 
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        PublicVars.paused = true;
+        paused = true;
         Time.timeScale = 0;
     }
 
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         slowmoHint.SetActive(false);
         pauseMenu.SetActive(false);
-        PublicVars.paused = false;
+        paused = false;
         Time.timeScale = 1;
     }
 

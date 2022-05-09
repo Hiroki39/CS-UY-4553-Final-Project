@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 8633878937925483475}
   - component: {fileID: 8633878937925483474}
   - component: {fileID: -1768552090523645867}
+  - component: {fileID: 4187260403131409059}
   m_Layer: 0
   m_Name: Gem2
   m_TagString: Gem2
@@ -206,6 +207,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gemEatingSound: {fileID: 8300000, guid: e6c3ab9cef06a4a6fa13241e114233cb, type: 3}
+--- !u!114 &4187260403131409059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633878937925483473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52fc337db19d4b8a8601eaba3cab2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idx: 0
+  scale: 1
+  isBlue: 1
 --- !u!1001 &1806295105790041770
 PrefabInstance:
   m_ObjectHideFlags: 0
