@@ -81,6 +81,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (!isAlive)
         {
+            SaveLoad.Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
