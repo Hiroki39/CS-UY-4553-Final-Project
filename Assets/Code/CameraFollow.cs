@@ -37,9 +37,9 @@ public class CameraFollow : MonoBehaviour
                 {
                     StartCoroutine(RotateCamera(0, 1));
                 }
-                else if (PublicVars.camPos == 1)
+                else if (PublicVars.camPos == 4)
                 {
-                    StartCoroutine(RotateCamera(1, 0));
+                    StartCoroutine(RotateCamera(4, 0));
                 }
 
             }
@@ -49,9 +49,9 @@ public class CameraFollow : MonoBehaviour
                 {
                     StartCoroutine(RotateCamera(0, 2));
                 }
-                else if (PublicVars.camPos == 2)
+                else if (PublicVars.camPos == 3)
                 {
-                    StartCoroutine(RotateCamera(2, 0));
+                    StartCoroutine(RotateCamera(3, 0));
                 }
             }
             else if (Input.GetKeyDown(KeyCode.S))
@@ -60,9 +60,9 @@ public class CameraFollow : MonoBehaviour
                 {
                     StartCoroutine(RotateCamera(0, 3));
                 }
-                else if (PublicVars.camPos == 3)
+                else if (PublicVars.camPos == 2)
                 {
-                    StartCoroutine(RotateCamera(3, 0));
+                    StartCoroutine(RotateCamera(2, 0));
                 }
             }
             else if (Input.GetKeyDown(KeyCode.D))
@@ -71,9 +71,9 @@ public class CameraFollow : MonoBehaviour
                 {
                     StartCoroutine(RotateCamera(0, 4));
                 }
-                else if (PublicVars.camPos == 4)
+                else if (PublicVars.camPos == 1)
                 {
-                    StartCoroutine(RotateCamera(4, 0));
+                    StartCoroutine(RotateCamera(1, 0));
                 }
             }
         }
