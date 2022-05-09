@@ -147,8 +147,6 @@ public class PlayerMove : MonoBehaviour
     {
         isDying = true;
         GetComponent<TimeBody>().StopRewind();
-
-        yield return new WaitForSeconds(0.5f);
         rb.isKinematic = true;
         rb.freezeRotation = true;
         rend.enabled = false;
