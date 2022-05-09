@@ -12,7 +12,7 @@ public class RandomTrap : MonoBehaviour
     public Transform blueLoc;
     public Transform violetLoc;
 
-    void Start()
+    void Awake()
     {
         bool isBlueTrap = (Random.value >= 0.5f);
         if (isBlueTrap)

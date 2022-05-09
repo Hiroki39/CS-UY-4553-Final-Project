@@ -9,14 +9,10 @@ public class TransparencyManager : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(InitTransparency());
-    }
-
-    IEnumerator InitTransparency()
-    {
-        yield return new WaitForSeconds(0.5f);
+        AdjustTransparency(PublicVars.opacity);
         opacitySlider.value = PublicVars.opacity;
     }
+
     public void AdjustTransparency(float alpha)
     {
         PublicVars.opacity = alpha;
