@@ -120,7 +120,7 @@ public class PlayerMove : MonoBehaviour
             }
             isBlue = !isBlue;
         }
-        if (grounded != isGrounded())
+        if (grounded != IsGrounded())
         {
             if (grounded == true)
             {
@@ -131,7 +131,7 @@ public class PlayerMove : MonoBehaviour
             {
                 trend.enabled = false;
             }
-            grounded = isGrounded();
+            grounded = IsGrounded();
         }
 
         if (Input.GetButtonDown("Jump") && grounded)
@@ -207,7 +207,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    bool isGrounded()
+    bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, transform.localScale.y / 2 + 0.2f);
     }
