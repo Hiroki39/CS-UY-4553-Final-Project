@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour
     bool movedToLastPlatform = false;
     bool jumped = false;
     int popUpIndex = 0;
+
     private void Start()
     {
         goal.SetActive(false);
