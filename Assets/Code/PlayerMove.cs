@@ -31,7 +31,7 @@ public class PlayerMove : MonoBehaviour
     bool readyToJump = false;
     bool infiniteJump = false;
     bool isSlowmoActive = false;
-    bool beforeDieSlowmoStarted = false;
+    bool beforeDieWaitStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -82,9 +82,9 @@ public class PlayerMove : MonoBehaviour
 
         if (transform.position.y < dieLimit)
         {
-            if (!beforeDieSlowmoStarted)
+            if (!beforeDieWaitStarted)
             {
-                StartCoroutine(DieSequence());
+                StartCoroutine(WaitToDie());
             }
         }
 
@@ -139,9 +139,25 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    IEnumerator DieSequence()
+    IEnumerator Die()
     {
-        beforeDieSlowmoStarted = true;
+        isDying = true;
+        GetComponent<TimeBody>().StopRewind();
+
+        yield return new WaitForSeconds(0.5f);
+        rb.isKinematic = true;
+        rb.freezeRotation = true;
+        rend.enabled = false;
+        trend.enabled = false;
+
+        ps[9].Play();
+        yield return new WaitForSeconds(3.0f);
+        isAlive = false;
+    }
+
+    IEnumerator WaitToDie()
+    {
+        beforeDieWaitStarted = true;
 
         // player have three seconds to rewind
         yield return new WaitForSeconds(3.0f);
@@ -149,19 +165,11 @@ public class PlayerMove : MonoBehaviour
         // if the ball after slowmo is still under the limit
         if (transform.position.y < dieLimit)
         {
-            GetComponent<TimeBody>().StopRewind();
-            isDying = true;
-            rb.freezeRotation = true;
-
-            ps[9].Play();
-            rend.enabled = false;
-            trend.enabled = false;
-            yield return new WaitForSeconds(4.0f);
-            isAlive = false;
+            StartCoroutine(Die());
         }
         else
         {
-            beforeDieSlowmoStarted = false;
+            beforeDieWaitStarted = false;
         }
     }
 
@@ -178,6 +186,8 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDying) return;
+
         float zSpeed = Input.GetAxis("Vertical") * force;
         float xSpeed = Input.GetAxis("Horizontal") * force;
         rb.AddForce(new Vector3(xSpeed, 0, zSpeed));
@@ -201,9 +211,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if ((other.gameObject.CompareTag("Ground1") && !isBlue) || (other.gameObject.CompareTag("Ground2") && isBlue))
+        if (((other.gameObject.CompareTag("Ground1") && !isBlue) || (other.gameObject.CompareTag("Ground2") && isBlue)) && !isDying)
         {
-            isAlive = false;
+            StartCoroutine(Die());
         }
         if (other.relativeVelocity.y > 6 && !cf.shaking)
         {
@@ -212,9 +222,9 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnCollisionStay(Collision other)
     {
-        if ((other.gameObject.CompareTag("Ground1") && !isBlue) || (other.gameObject.CompareTag("Ground2") && isBlue))
+        if (((other.gameObject.CompareTag("Ground1") && !isBlue) || (other.gameObject.CompareTag("Ground2") && isBlue)) && !isDying)
         {
-            isAlive = false;
+            StartCoroutine(Die());
         }
     }
 
