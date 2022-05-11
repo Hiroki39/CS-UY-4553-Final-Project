@@ -7,7 +7,7 @@ public class FallingPlatform : MonoBehaviour
     public AudioClip platformLandingSound;
     Rigidbody rb;
     ParticleSystem ps;
-    bool landed = false;
+    [HideInInspector] public bool landed = false;
     float waitTime = 0.5f;
     float hitVolume = 2f;
     // Start is called before the first frame update
@@ -32,6 +32,23 @@ public class FallingPlatform : MonoBehaviour
             StartCoroutine(Fall());
         }
     }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player") && !landed)
+        {
+            AudioSource objectSound = other.gameObject.GetComponent<PlayerMove>().objectSound;
+            objectSound.PlayOneShot(platformLandingSound, hitVolume);
+            StartCoroutine(Fall());
+        }
+        if (other.gameObject.CompareTag("PlayerEx") && !landed)
+        {
+            AudioSource objectSound = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().objectSound;
+            objectSound.PlayOneShot(platformLandingSound, hitVolume);
+            StartCoroutine(Fall());
+        }
+    }
+
     IEnumerator Fall()
     {
         landed = true;

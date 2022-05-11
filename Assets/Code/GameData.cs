@@ -9,11 +9,12 @@ public class GameData
     public int camPos;
     public float[] personalBest;
     public float opacity;
-    public GameData(int levelUnlockedInt, int camPosInt, float[] personalBestFloats, float opacityFloat)
+    public bool infoShow;
+    public GameData(int camPosInt, float[] personalBestFloats, float opacityFloat, bool infoShowBool)
     {
-        levelUnlocked = levelUnlockedInt;
         camPos = camPosInt;
         personalBest = personalBestFloats;
         opacity = opacityFloat;
+        infoShow = infoShowBool;
     }
 }

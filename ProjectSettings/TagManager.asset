@@ -16,6 +16,8 @@ TagManager:
   - Gem5
   - LevelBtn
   - GroundFallTutorial
+  - CheckPointPlane
+  - Gem2Ex
   layers:
   - Default
   - TransparentFX

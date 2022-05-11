@@ -22,7 +22,6 @@ public class NextLevel : MonoBehaviour
             if (currLevel < PublicVars.numLevel)
             {
                 PublicVars.LevelBegin();
-                PublicVars.levelUnlocked = Mathf.Max(PublicVars.levelUnlocked, currLevel + 1);
                 SaveLoad.Save();
                 SceneManager.LoadScene("Level" + (currLevel + 1).ToString());
             }

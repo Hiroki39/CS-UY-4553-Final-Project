@@ -10,7 +10,7 @@ public class LevelSelectionManager : MonoBehaviour
     void Start()
     {
         GameObject[] levelBtns = GameObject.FindGameObjectsWithTag("LevelBtn");
-        for (int i = 0; i < PublicVars.levelUnlocked; ++i)
+        for (int i = 0; i < PublicVars.numLevel; ++i)
         {
             if (PublicVars.personalBest[i] > 0)
             {

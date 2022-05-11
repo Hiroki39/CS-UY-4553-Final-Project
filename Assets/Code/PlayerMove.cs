@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
     [HideInInspector] public bool isDying = false;
+    [HideInInspector] public float slowdownFactor = 0.2f;
 
     Renderer rend;
     TrailRenderer trend;
@@ -21,7 +22,6 @@ public class PlayerMove : MonoBehaviour
     ParticleSystem[] ps;
     float force = 12f;
     float maxSpeed = 12f;
-    float slowdownFactor = 0.2f;
     bool isAlive = true;
     bool isBlue = true;
     bool grounded = false;
@@ -176,7 +176,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    IEnumerator DoSlowmo(float delayStartSlowmo, float delayStopSlowmo)
+    public IEnumerator DoSlowmo(float delayStartSlowmo, float delayStopSlowmo)
     {
         yield return new WaitForSeconds(delayStartSlowmo);
         Time.timeScale = slowdownFactor;
