@@ -6,7 +6,7 @@ public class PublicVars : MonoBehaviour
 {
     // static int defaultCheckPoint = 0;
     public static bool checkPointIsBlue = true;
-    public static bool infoShow = true;
+    public static bool infoShow = false;
     public static float checkPointScale = 1f;
     public static Vector3 checkPointPosition = new Vector3(0f, 1f, 0f);
     public static int camPos = 0;
