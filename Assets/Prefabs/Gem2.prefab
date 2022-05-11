@@ -219,7 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52fc337db19d4b8a8601eaba3cab2c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idx: 0
   scale: 1
   isBlue: 1
 --- !u!1001 &1806295105790041770
@@ -585,15 +584,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3451171575132689796, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.3712533
+      value: 0.99215686
       objectReference: {fileID: 0}
     - target: {fileID: 3451171575132689796, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.3504361
+      value: 0.9603642
       objectReference: {fileID: 0}
     - target: {fileID: 3451171575132689796, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.990566
+      value: 0.34901965
       objectReference: {fileID: 0}
     - target: {fileID: 6311507281794302908, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: m_Name
@@ -601,7 +600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6311507281794302908, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7821984404615888902, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: m_RootOrder
@@ -706,6 +705,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585671604984661011, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671604984661011, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 20
       objectReference: {fileID: 0}
@@ -732,6 +735,14 @@ PrefabInstance:
     - target: {fileID: 5585671604984661021, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: m_Name
       value: BasicSpark 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671604984661021, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671606167315526, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585671606167315526, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -762,6 +773,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5585671606615352488, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671606615352488, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -787,6 +802,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5585671606770024618, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671606770024623, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585671606770024623, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}

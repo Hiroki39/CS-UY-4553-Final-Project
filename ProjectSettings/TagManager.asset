@@ -15,6 +15,7 @@ TagManager:
   - PlayerEx
   - Gem5
   - LevelBtn
+  - GroundFallTutorial
   layers:
   - Default
   - TransparentFX

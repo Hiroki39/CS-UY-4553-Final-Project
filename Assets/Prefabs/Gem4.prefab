@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 6599046192833936396}
   - {fileID: 814936551696110444}
-  - {fileID: 6970873476659372041}
+  - {fileID: 6764757852774329796}
   - {fileID: 2484896132293919190}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -206,7 +206,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1001 &878414278938320911
+--- !u!1001 &3561355763024883138
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -219,29 +219,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451171575132689796, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.98415697
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3451171575132689796, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.990566
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3453608310278285902, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 40c64702d468d1546bc0def47a66d50b, type: 2}
     - target: {fileID: 6311507281794302908, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: m_Name
       value: Particle
       objectReference: {fileID: 0}
     - target: {fileID: 6311507281794302908, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317923641005628384, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
-      propertyPath: m_Name
-      value: Particle System
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317923641005628384, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -291,10 +279,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
---- !u!4 &6970873476659372041 stripped
+--- !u!4 &6764757852774329796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7821984404615888902, guid: 804d00a5fdb984e6eafdbb6d14136fa4, type: 3}
-  m_PrefabInstance: {fileID: 878414278938320911}
+  m_PrefabInstance: {fileID: 3561355763024883138}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6764127332643944470
 PrefabInstance:
@@ -754,6 +742,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585671604984661011, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671604984661011, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 20
       objectReference: {fileID: 0}
@@ -780,6 +772,14 @@ PrefabInstance:
     - target: {fileID: 5585671604984661021, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: m_Name
       value: BasicSpark 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671604984661021, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671606167315526, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585671606167315526, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -809,6 +809,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5585671606615352488, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5585671606615352489, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -823,6 +827,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5585671606770024618, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585671606770024623, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

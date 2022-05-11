@@ -104,17 +104,31 @@ public class TutorialManager : MonoBehaviour
             }
             else if (popUpIndex == 12 && pickedCheckpoint)
             {
-                StartCoroutine(ChangePopUp(3f, -1));
+                GameObject.FindGameObjectsWithTag("GroundFallTutorial")[0].GetComponent<Rigidbody>().isKinematic = false;
+                StartCoroutine(ChangePopUp(0.5f, -1));
+                StartCoroutine(DoSlowmo(1f, 5f));  
             }
             else if (popUpIndex == 13)
             {
-                StartCoroutine(ChangePopUp(2f, -1));
+                StartCoroutine(ChangePopUp(1.5f, -1));
             }
             else if (popUpIndex == 14)
             {
-                StartCoroutine(ChangePopUp(5f, 2));
+                StartCoroutine(ChangePopUp(4f, 2));
             }
         }
+    }
+
+    float slowdownFactor = 0.1f;
+
+    IEnumerator DoSlowmo(float delayStartSlowmo, float delayStopSlowmo)
+    {
+        yield return new WaitForSeconds(delayStartSlowmo);
+        Time.timeScale = slowdownFactor;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
+        yield return new WaitForSeconds(delayStopSlowmo * slowdownFactor);
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
     }
 
     public IEnumerator ChangePopUp(float waitTime, int wall)
@@ -164,4 +178,6 @@ public class TutorialManager : MonoBehaviour
             jumped = true;
         }
     }
+
+    
 }
