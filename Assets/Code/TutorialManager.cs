@@ -86,25 +86,25 @@ public class TutorialManager : MonoBehaviour
             {
                 StartCoroutine(ChangePopUp(1f, -1));
             }
-            else if (popUpIndex == 8 && pickedBig)
-            {
-                StartCoroutine(ChangePopUp(3f, -1));
-            }
-            else if (popUpIndex == 9 && pickedSmall)
-            {
-                StartCoroutine(ChangePopUp(3f, -1));
-            }
-            else if (popUpIndex == 10 && pickedCheckpoint)
-            {
-                StartCoroutine(ChangePopUp(3f, -1));
-            }
-            else if (popUpIndex == 11)
+            else if (popUpIndex == 8)
             {
                 StartCoroutine(ChangePopUp(4f, -1));
             }
-            else if (popUpIndex == 12)
+            else if (popUpIndex == 9)
             {
                 StartCoroutine(ChangePopUp(4f, -1));
+            }
+            else if (popUpIndex == 10 && pickedBig)
+            {
+                StartCoroutine(ChangePopUp(4f, -1));
+            }
+            else if (popUpIndex == 11 && pickedSmall)
+            {
+                StartCoroutine(ChangePopUp(3f, -1));
+            }
+            else if (popUpIndex == 12 && pickedCheckpoint)
+            {
+                StartCoroutine(ChangePopUp(3f, -1));
             }
             else if (popUpIndex == 13)
             {

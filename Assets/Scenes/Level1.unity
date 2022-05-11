@@ -1961,7 +1961,7 @@ Transform:
   - {fileID: 2058759794}
   - {fileID: 86135481}
   m_Father: {fileID: 1916551391}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!102 &536734461
 TextMesh:
@@ -2704,7 +2704,7 @@ Transform:
   m_Children:
   - {fileID: 2049762670}
   m_Father: {fileID: 1916551391}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!102 &733187175
 TextMesh:
@@ -3113,7 +3113,7 @@ Transform:
   m_Children:
   - {fileID: 1145569116}
   m_Father: {fileID: 1916551391}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!102 &784164624
 TextMesh:
@@ -3415,7 +3415,7 @@ Transform:
   m_Children:
   - {fileID: 1987790850}
   m_Father: {fileID: 1916551391}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!102 &880069661
 TextMesh:
@@ -3632,11 +3632,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927526627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17, y: 6, z: 54.05}
+  m_LocalPosition: {x: -9.56, y: 5.89, z: 54.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1916551391}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!102 &927526629
 TextMesh:
@@ -3646,10 +3646,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927526627}
-  m_Text: 'Some tiles fall down when you stand on them
-
-    Particle Effect and a
-    sound indicates this
+  m_Text: 'Some tiles are traps
 
     Keep a lookout for them'
   m_OffsetZ: 0
@@ -3812,9 +3809,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981075601}
-  m_Text: 'Oh also, don''t fall off the platform.
-
-    Duh.'
+  m_Text: Oh also, don't fall off the platform.
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -4177,17 +4172,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gem3
       objectReference: {fileID: 0}
+    - target: {fileID: 8633878937925483473, guid: 2641ed0829b8445ca9061be19efcd1e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8633878937925483477, guid: 2641ed0829b8445ca9061be19efcd1e4, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8633878937925483477, guid: 2641ed0829b8445ca9061be19efcd1e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16
+      value: 19.63
       objectReference: {fileID: 0}
     - target: {fileID: 8633878937925483477, guid: 2641ed0829b8445ca9061be19efcd1e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: -4.96
       objectReference: {fileID: 0}
     - target: {fileID: 8633878937925483477, guid: 2641ed0829b8445ca9061be19efcd1e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4545,7 +4544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226139486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.34, y: 6, z: 36}
+  m_LocalPosition: {x: -12.95, y: 5.7, z: 36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1916551391}
@@ -4561,9 +4560,7 @@ TextMesh:
   m_GameObject: {fileID: 1226139486}
   m_Text: 'E = Slow motion
 
-    Slowmo activates for 0.2s
-
-    when you jump'
+    Slowmo activates when you jump'
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -5058,7 +5055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430076959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.25, y: 5, z: 36}
+  m_LocalPosition: {x: -9.22, y: 4.45, z: 36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1916551391}
@@ -5949,11 +5946,11 @@ Transform:
   - {fileID: 1226139487}
   - {fileID: 1963216990}
   - {fileID: 654539045}
+  - {fileID: 927526628}
+  - {fileID: 536734460}
   - {fileID: 880069660}
   - {fileID: 784164623}
   - {fileID: 733187174}
-  - {fileID: 927526628}
-  - {fileID: 536734460}
   - {fileID: 981075602}
   - {fileID: 1239558161}
   m_Father: {fileID: 0}
@@ -6507,11 +6504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8633878937925483477, guid: 078f89feb895f4f7489a8f5eca7e10f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5
+      value: 3.39
       objectReference: {fileID: 0}
     - target: {fileID: 8633878937925483477, guid: 078f89feb895f4f7489a8f5eca7e10f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.3
+      value: -4.29
       objectReference: {fileID: 0}
     - target: {fileID: 8633878937925483477, guid: 078f89feb895f4f7489a8f5eca7e10f9, type: 3}
       propertyPath: m_LocalPosition.z
