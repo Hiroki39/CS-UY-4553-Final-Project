@@ -631,7 +631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114299706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.43, y: 4.63, z: 13.5}
+  m_LocalPosition: {x: -10.94, y: 4.63, z: 13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1916551391}
@@ -645,7 +645,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114299706}
-  m_Text: "\u2190 Key = Move Left\n\u2192 Key = Move Right\n"
+  m_Text: '  Left Arrow Key = Move Left
+
+    RIght Arrow Key = Move Right'
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -4302,7 +4304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163660875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.08, y: 4.53, z: 13.5}
+  m_LocalPosition: {x: -13.2, y: 4.53, z: 13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1916551391}
@@ -4316,7 +4318,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163660875}
-  m_Text: "\u2191 Key = Move Forward\n\u2193 Key = Move Backward"
+  m_Text: '    Up Arrow Key   =  Move Forward
+
+    Down Arrow Key = Move Backward'
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
