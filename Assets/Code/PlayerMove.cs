@@ -7,8 +7,10 @@ public class PlayerMove : MonoBehaviour
 {
     public Material Mat1;
     public Material Mat2;
-    public GameObject blueGemPicked;
+    // public GameObject blueGemPicked;
     public AudioSource objectSound;
+    public AudioClip slowmoSound;
+    public AudioClip dyingSound;
     public TMP_Text slowmoText;
     public int dieLimit;
     [HideInInspector] public float jumpForce = 6f;
@@ -22,11 +24,13 @@ public class PlayerMove : MonoBehaviour
     ParticleSystem[] ps;
     float force = 12f;
     float maxSpeed = 12f;
+    float slowmoVolume = 2f;
+    float dyingVolume = 2f;
     bool isAlive = true;
     bool isBlue = true;
     bool grounded = false;
     bool readyToJump = false;
-    bool infiniteJump = false;
+    // bool infiniteJump = false;
     bool isSlowmoActive = false;
     bool beforeDieWaitStarted = false;
 
@@ -146,6 +150,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator Die()
     {
+        objectSound.PlayOneShot(dyingSound, dyingVolume);
         isDying = true;
         GetComponent<TimeBody>().StopRewind();
         rb.isKinematic = true;
@@ -179,6 +184,7 @@ public class PlayerMove : MonoBehaviour
     public IEnumerator DoSlowmo(float delayStartSlowmo, float delayStopSlowmo)
     {
         yield return new WaitForSeconds(delayStartSlowmo);
+        objectSound.PlayOneShot(slowmoSound, slowmoVolume);
         Time.timeScale = slowdownFactor;
         Time.fixedDeltaTime = Time.timeScale * .02f;
         yield return new WaitForSeconds(delayStopSlowmo * slowdownFactor);
@@ -233,14 +239,14 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Gem1"))
-        {
-            if (!infiniteJump)
-            {
-                StartCoroutine(BlueGemFirstTime());
-                infiniteJump = true;
-            }
-        }
+        // if (other.gameObject.CompareTag("Gem1"))
+        // {
+        //     if (!infiniteJump)
+        //     {
+        //         StartCoroutine(BlueGemFirstTime());
+        //         infiniteJump = true;
+        //     }
+        // }
 
         if (other.gameObject.CompareTag("Gem2"))
         {
@@ -250,7 +256,7 @@ public class PlayerMove : MonoBehaviour
             PublicVars.checkPointPosition = other.gameObject.transform.position;
         }
 
-        if (other.gameObject.CompareTag("Gem3"))
+        else if (other.gameObject.CompareTag("Gem3"))
         {
             //transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
 
@@ -258,7 +264,7 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(ScaleOverSeconds(gameObject, scaleTo, 1f));
         }
 
-        if (other.gameObject.CompareTag("Gem4"))
+        else if (other.gameObject.CompareTag("Gem4"))
         {
             //transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
 
@@ -285,12 +291,12 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(.2f);
     }
 
-    public IEnumerator BlueGemFirstTime()
-    {
-        blueGemPicked.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        blueGemPicked.SetActive(false);
-    }
+    // public IEnumerator BlueGemFirstTime()
+    // {
+    //     blueGemPicked.SetActive(true);
+    //     yield return new WaitForSeconds(3f);
+    //     blueGemPicked.SetActive(false);
+    // }
 
     IEnumerator AutoSave()
     {

@@ -115,19 +115,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mat1: {fileID: 2100000, guid: 564f8f452b289434f956310d951b423a, type: 2}
   Mat2: {fileID: 2100000, guid: 770dc2c59bfc9445392dea7ada0b6956, type: 2}
-  checkPoints:
-  - {fileID: 0}
-  checkPointIsBlues: 01
-  checkPointScales:
-  - 1
   blueGemPicked: {fileID: 0}
   objectSound: {fileID: 0}
-  slowdownFactor: 0.2
-  slowmoCount: 3
+  slowmoSound: {fileID: 8300000, guid: 676fc5aa1a558428faf8b2661e10536f, type: 3}
+  dyingSound: {fileID: 8300000, guid: 70645897629534e2b90a78027c03414f, type: 3}
   slowmoText: {fileID: 0}
-  slowmoDieLimit: 0
   dieLimit: 0
   jumpForce: 6
+  isDying: 0
+  slowdownFactor: 0.2
 --- !u!54 &9088059504169643755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recordTime: 5
+  rewindBar: {fileID: 0}
 --- !u!1001 &1078684748010860887
 PrefabInstance:
   m_ObjectHideFlags: 0
